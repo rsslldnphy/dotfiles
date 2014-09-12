@@ -18,6 +18,7 @@ echo ""
 # utilities
 brew install git
 brew install hub
+brew install ack
 
 # languages
 brew install leiningen
@@ -31,6 +32,9 @@ brew install python
 
 brew tap homebrew/science
 brew install r
+
+# datastores
+brew install postgresql
 
 # editors
 brew install macvim --override-system-vim

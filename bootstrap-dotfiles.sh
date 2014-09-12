@@ -23,3 +23,6 @@ ensure-link gitconfig
 
 ensure-link bash
 ensure-link bash_profile
+
+ensure-link vim
+ensure-link vimrc
