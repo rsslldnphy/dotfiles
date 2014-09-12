@@ -1,0 +1,28 @@
+[core]
+    editor = vim 
+    whitespace = trailing-space,space-before-tab
+[merge]
+    mergeoptions = --no-ff
+[url "git://github.com/"]
+  # Read-only
+  insteadOf = gh:
+[url "git@github.com:"]
+  # Write
+  insteadOf = wgh:
+[url "git@heroku.com:"]
+  insteadOf = heroku:
+[user]
+  name = Russell
+  email = russell@russelldunphy.com
+[alias]
+  co = checkout
+  ci = commit -m
+  aa = add -A
+  pretty = log --oneline --graph --decorate --all
+[push]
+  default = upstream
+
+[credential]
+
+[hub]
+protocol = git

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+alias bi="bundle install"
+alias be="bundle exec"
+alias bu="bundle update"
+alias bo="bundle open"
+
+alias cuke='be cucumber'
+alias e='vim'
+alias :q='exit'
+alias gst='git status'
+
+alias git='hub'
+alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
