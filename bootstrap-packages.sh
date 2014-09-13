@@ -19,6 +19,7 @@ echo ""
 brew install git
 brew install hub
 brew install ack
+brew install tree
 
 # languages
 brew install leiningen
