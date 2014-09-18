@@ -1,0 +1,41 @@
+#!/bin/bash
+
+PROJECT_NAME=`basename $(pwd)`
+PROJECT_DIR=`pwd`
+NREPL_PORT=$(cat .nrepl-port 2> /dev/null || echo 8000)
+
+echo ""
+echo "*************************************************************"
+echo "******************* IT'S CLOJURE TIME! **********************"
+echo "*************************************************************"
+echo ""
+echo "Setting up workspace for the $PROJECT_NAME project."
+echo -n "Loading NREPL on port $NREPL_PORT."
+
+say "Its Clojur time!"
+
+tmux has-session -t $PROJECT_NAME &> /dev/null
+
+if [ $? != 0 ] ; then
+  tmux new-session -s $PROJECT_NAME -n script -d
+  tmux rename-window "$PROJECT_NAME-CODE"
+  tmux new-window -n "$PROJECT_NAME-REPL"  "cd $PROJECT_DIR && LEIN_REPL_PORT=$NREPL_PORT lein repl"
+  tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR; lein autoexpect"
+
+  tmux select-window -t "$PROJECT_NAME-CODE"
+  tmux send-keys  "cd $PROJECT_DIR; reattach-to-user-namespace -l vim project.clj" C-m
+
+  say "Loading n repple on port $NREPL_PORT"
+
+  while ! nc -z localhost $NREPL_PORT; do echo -n '.'; say "cough"; sleep 1; done
+  say "phew, finally. lets hack on $PROJECT_NAME"
+  echo ""
+
+  tmux send-keys ":Connect nrepl://localhost:$NREPL_PORT" C-m C-m
+fi
+
+tmux bind r select-window -t "$PROJECT_NAME-REPL"
+tmux bind t select-window -t "$PROJECT_NAME-TESTS"
+tmux bind c select-window -t "$PROJECT_NAME-CODE"
+
+tmux attach -t $PROJECT_NAME

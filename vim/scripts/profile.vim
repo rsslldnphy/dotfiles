@@ -2,13 +2,8 @@ filetype plugin indent on
 syntax on
 syntax enable
 
-"" Colors
-colorscheme solarized
-set term=xterm-256color
-let g:solarized_termtrans = 1
 let g:haddock_browser="/Applications/Firefox.app/Contents/MacOS/firefox"
 set background=dark
-
 "" Window
 set number
 set scrolloff=3
@@ -47,8 +42,7 @@ set iskeyword+=_,$,@,%,#,-
 "" Mouse
 set mouse=a
 set mousehide
-set ttymouse=xterm2 
-
+set ttymouse=xterm2
 "" Search
 set hlsearch
 set incsearch
@@ -63,3 +57,23 @@ set laststatus=2
 set nofoldenable
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
+
+if $TERM == "xterm-256color"
+  set t_Co=256
+endif
+
+nnoremap Q noop
+colorscheme flatlandia
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#fnamecollapse = 0
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+" Show the status line
+highlight LineNr ctermfg=grey
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

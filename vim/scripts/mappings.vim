@@ -3,22 +3,16 @@ let mapleader      = ","
 let maplocalleader = ","
 let g:mapleader    = ","
 
-" Quick access to test files
-map <leader>, :call Testing::AlternateFile()<cr>
-map <leader>t :call Testing::RunTests()<cr>
-map <leader>T :call Testing::RunNearestTest()<cr>
-map <leader>c :!bundle exec cucumber<cr>
-
 " Remove temptation of arrow keys
-" noremap <Up>       :echoerr "Use k instead!"<CR>
-" noremap <Down>     :echoerr "Use j instead!"<CR>
-" noremap <Left>     :echoerr "Use h instead!"<CR>
-" noremap <Right>    :echoerr "Use l instead!"<CR>
+noremap <Up>       :echoerr "Use k instead!"<CR>
+noremap <Down>     :echoerr "Use j instead!"<CR>
+noremap <Left>     :echoerr "Use h instead!"<CR>
+noremap <Right>    :echoerr "Use l instead!"<CR>
 
-" inoremap <Up>     <nop>
-" inoremap <Down>   <nop>
-" inoremap <Left>   <nop>
-" inoremap <Right>  <nop>
+inoremap <Up>     <nop>
+inoremap <Down>   <nop>
+inoremap <Left>   <nop>
+inoremap <Right>  <nop>
 
 " easier navigation between split windows
 nnoremap <c-j> <c-w>j
@@ -77,19 +71,5 @@ command! Wq  :wq
 command! Wqa :wqa
 command! E   :e
 
-map <leader>f :call SelectaCommand("find * -type f -o -path tmp -prune", "", ":e")<cr>
-
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
+nmap ,<space> :CtrlP<CR>
+noremap <C-x><C-c> :!tmux confirm kill-session<CR>
