@@ -24,5 +24,10 @@ ensure-link gitconfig
 ensure-link bash
 ensure-link bash_profile
 
+ensure-link lein
+
 ensure-link vim
 ensure-link vimrc
+
+ensure-link bin
+ensure-link tmux.conf

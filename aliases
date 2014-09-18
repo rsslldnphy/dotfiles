@@ -6,8 +6,7 @@ alias bu="bundle update"
 alias bo="bundle open"
 
 alias cuke='be cucumber'
-alias e='emacs'
-alias v='vim'
+alias e='vim'
 alias :q='exit'
 alias gst='git status'
 

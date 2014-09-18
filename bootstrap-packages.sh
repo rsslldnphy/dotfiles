@@ -12,7 +12,7 @@ if [ ! hash brew 2&> /dev/null ]; then
   exit 1
 fi
 
-echo "Installing Homebrew packages" 
+echo "Installing Homebrew packages"
 echo ""
 
 # utilities
@@ -20,6 +20,9 @@ brew install git
 brew install hub
 brew install ack
 brew install tree
+brew install tmux
+brew install reattach-to-user-namespace
+brew install drip
 
 # languages
 brew install leiningen
@@ -51,3 +54,5 @@ brew install caskroom/cask/brew-cask
 brew cask alfred link
 brew cask install google-chrome
 
+# exercism stuff
+brew install boost valgrind
