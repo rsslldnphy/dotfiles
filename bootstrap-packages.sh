@@ -33,6 +33,8 @@ brew install elixir
 brew install rbenv
 brew install ruby-build
 brew install python
+brew install nodejs # why??
+brew install npm
 
 brew tap homebrew/science
 brew install r
