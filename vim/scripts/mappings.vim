@@ -26,7 +26,8 @@ nmap <F3> :bnext<cr>
 nmap <F4>  :bdelete<cr>
 
 " Ack in project
-map <C-F> :Ack<space>
+map <C-f> :Ack<space>""<C-b>
+map <C-x><C-f> :Ack<space>""<C-b>
 
 " Beginning and end of line
 nnoremap <C-a> ^
