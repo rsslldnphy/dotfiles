@@ -71,5 +71,11 @@ command! Wq  :wq
 command! Wqa :wqa
 command! E   :e
 
-nmap ,<space> :CtrlP<CR>
+nmap <leader><space> :CtrlP<CR>
 noremap <C-x><C-c> :!tmux confirm kill-session<CR>
+
+nmap <leader>f :call Fussbudget::align()<cr>
+
+cnoremap <C-b> <left>
+cnoremap <C-f> <right>
+

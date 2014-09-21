@@ -49,3 +49,6 @@
 [submodule "vim/bundle/emoji"]
 	path = vim/bundle/emoji
 	url = git@github.com:junegunn/vim-emoji.git
+[submodule "vim/bundle/fussbudget"]
+	path = vim/bundle/fussbudget
+	url = git@github.com:rsslldnphy/clojure-fussbudget.vim.git
