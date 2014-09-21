@@ -28,9 +28,6 @@
 [submodule "vim/bundle/airline"]
 	path = vim/bundle/airline
 	url = git@github.com:bling/vim-airline.git
-[submodule "vim/bundle/classpath"]
-	path = vim/bundle/classpath
-	url = git@github.com:tpope/vim-classpath.git
 [submodule "vim/bundle/clojure-static"]
 	path = vim/bundle/clojure-static
 	url = git@github.com:guns/vim-clojure-static.git
