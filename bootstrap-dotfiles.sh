@@ -14,12 +14,14 @@ function ensure-link {
   fi 
 }
 
-ensure-link ackrc
 ensure-link aliases
 ensure-link prompt
 ensure-link inputrc
-ensure-link rspec
+
+ensure-link ackrc
+
 ensure-link gitconfig
+ensure-link csvignore
 
 ensure-link bash
 ensure-link bash_profile
