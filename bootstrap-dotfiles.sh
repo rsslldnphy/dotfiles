@@ -21,7 +21,7 @@ ensure-link inputrc
 ensure-link ackrc
 
 ensure-link gitconfig
-ensure-link csvignore
+ensure-link cvsignore
 
 ensure-link bash
 ensure-link bash_profile
