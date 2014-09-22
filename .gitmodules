@@ -52,3 +52,9 @@
 [submodule "vim/bundle/fussbudget"]
 	path = vim/bundle/fussbudget
 	url = git@github.com:rsslldnphy/clojure-fussbudget.vim.git
+[submodule "vim/bundle/puppet"]
+	path = vim/bundle/puppet
+	url = git@github.com:rodjek/vim-puppet.git
+[submodule "vim/bundle/nginx"]
+	path = vim/bundle/nginx
+	url = git@github.com:evanmiller/nginx-vim-syntax.git
