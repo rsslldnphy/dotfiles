@@ -80,3 +80,4 @@ au Syntax * RainbowParenthesesLoadBraces
 
 set omnifunc=emoji#complete
 
+autocmd BufRead,BufNewFile nginx*conf* set filetype=nginx

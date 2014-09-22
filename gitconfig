@@ -32,7 +32,7 @@
   email = russell@russelldunphy.com
 [alias]
   co = checkout
-  ci = commit -v
+  ci = commit -m
   aa = add -A
   pretty = log --oneline --graph --decorate --all
 [push]
