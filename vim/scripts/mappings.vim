@@ -29,10 +29,6 @@ nmap <F4>  :bdelete<cr>
 map <C-f> :Ack<space>""<C-b>
 map <C-x><C-f> :Ack<space>""<C-b>
 
-" Beginning and end of line
-nnoremap <C-a> ^
-nnoremap <C-e> $
-
 " Splits
 map <leader>v :vs<cr>
 
@@ -80,3 +76,5 @@ nmap <leader>gg=G gg0=G :call Fussbudget::align()<cr>
 cnoremap <C-b> <left>
 cnoremap <C-f> <right>
 
+nnoremap <leader>b :buffers<CR>:buffer<space>
+nnoremap <leader>k :bdelete<space>

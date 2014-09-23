@@ -58,3 +58,6 @@
 [submodule "vim/bundle/nginx"]
 	path = vim/bundle/nginx
 	url = git@github.com:evanmiller/nginx-vim-syntax.git
+[submodule "vim/bundle/javascript-indent"]
+	path = vim/bundle/javascript-indent
+	url = git@github.com:vim-scripts/JavaScript-Indent.git
