@@ -1,7 +1,11 @@
 function! Util::CleanupWhiteSpace()
-  execute "normal! ma"
-  :%s/\s\+$//
-  execute "normal! `a"
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
 endfunction
 
 function! Util::InsertTabWrapper()

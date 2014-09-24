@@ -57,4 +57,4 @@ brew cask alfred link
 brew cask install google-chrome
 
 # exercism stuff
-brew install boost valgrind
+brew install boost valgrind cmake

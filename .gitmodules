@@ -61,3 +61,6 @@
 [submodule "vim/bundle/javascript-indent"]
 	path = vim/bundle/javascript-indent
 	url = git@github.com:vim-scripts/JavaScript-Indent.git
+[submodule "vim/bundle/repeat"]
+	path = vim/bundle/repeat
+	url = git@github.com:tpope/vim-repeat.git
