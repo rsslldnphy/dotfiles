@@ -67,3 +67,7 @@ cnoremap <C-f> <right>
 
 nnoremap <leader>b :buffers<CR>:buffer<space>
 nnoremap <leader>k :bdelete<space>
+
+inoremap <C-h> <C-r>=PareditMoveLeft()<CR>
+inoremap <C-l> <C-r>=PareditMoveRight()<CR>
+inoremap <C-s> <C-r>=PareditSplice()<CR>
