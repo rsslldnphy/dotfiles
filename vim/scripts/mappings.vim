@@ -78,6 +78,6 @@ nnoremap <silent> <leader><C-h> :call PareditMoveLeft()<CR>
 nnoremap <silent> <leader><C-l> :call PareditMoveRight()<CR>
 nnoremap <silent> <leader><C-s> :call PareditSplice()<CR>
 
-inoremap <buffer> <silent> <C-h> <C-r>=<C-u>PareditMoveLeft()<CR><bs><right>
-inoremap <buffer> <silent> <C-l> <C-r>=<C-u>PareditMoveRight()<CR><bs><right>
-inoremap <buffer> <silent> <C-s> <C-r>=<C-u>PareditSplice()<CR><bs>
+inoremap <silent> <C-h> <C-r>=<C-u>PareditMoveLeft()<CR><bs><right>
+inoremap <silent> <C-l> <C-r>=<C-u>PareditMoveRight()<CR><bs><right>
+inoremap <silent> <C-s> <C-r>=<C-u>PareditSplice()<CR><bs>
