@@ -62,12 +62,22 @@ function! OverloadedIndent()
 endfunction
 nmap <leader>gg=G call OverloadedIndent()<CR>
 
-cnoremap <C-b> <left>
-cnoremap <C-f> <right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
 
 nnoremap <leader>b :buffers<CR>:buffer<space>
 nnoremap <leader>k :bdelete<space>
 
-inoremap <C-h> <C-r>=PareditMoveLeft()<CR>
-inoremap <C-l> <C-r>=PareditMoveRight()<CR>
-inoremap <C-s> <C-r>=PareditSplice()<CR>
+nnoremap <silent> <leader><C-h> :call PareditMoveLeft()<CR>
+nnoremap <silent> <leader><C-l> :call PareditMoveRight()<CR>
+nnoremap <silent> <leader><C-s> :call PareditSplice()<CR>
+
+inoremap <buffer> <silent> <C-h> <C-r>=<C-u>PareditMoveLeft()<CR><bs><right>
+inoremap <buffer> <silent> <C-l> <C-r>=<C-u>PareditMoveRight()<CR><bs><right>
+inoremap <buffer> <silent> <C-s> <C-r>=<C-u>PareditSplice()<CR><bs>

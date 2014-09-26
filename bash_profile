@@ -1,3 +1,5 @@
+stty -ixon # to pass C-s and C-q through to vim etc
+
 source ~/.aliases
 source ~/.prompt
 source ~/.bash/git-completion.sh
