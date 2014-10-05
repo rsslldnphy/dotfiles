@@ -35,6 +35,8 @@ brew install ruby-build
 brew install python
 brew install nodejs # why??
 brew install npm
+brew install scala
+brew install sbt
 
 brew tap homebrew/science
 brew install r
