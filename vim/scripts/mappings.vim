@@ -22,7 +22,7 @@ nnoremap <c-l> <c-w>l
 
 " Ack in project
 map <C-f> :Ack<space>""<C-b>
-map <C-x><C-f> :Ack<space>""<C-b>
+map <leader>f :Ack<space>""<C-b>
 
 " Splits
 map <leader>v :vs<cr>

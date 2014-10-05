@@ -16,27 +16,23 @@ echo "Installing Homebrew packages"
 echo ""
 
 # utilities
-brew install git
-brew install hub
-brew install ack
+brew install git hub
 brew install tree
 brew install tmux
-brew install reattach-to-user-namespace
-brew install drip
+brew install drip                       # for faster jvm startup
+brew install reattach-to-user-namespace # for vim clipboard in tmux
+brew install the_silver_searcher
 
 # languages
 brew install leiningen
-brew install ghc
-brew install cabal-install
+brew install ghc cabal-install
 brew install erlang
 brew install elixir
-brew install rbenv
-brew install ruby-build
+brew install rbenv ruby-build
 brew install python
-brew install nodejs # why??
-brew install npm
-brew install scala
-brew install sbt
+brew install nodejs npm # why??
+brew install scala sbt
+brew install boost valgrind cmake
 
 brew tap homebrew/science
 brew install r
@@ -46,17 +42,12 @@ brew install postgresql
 
 # editors
 brew install macvim --override-system-vim
-brew install emacs
-brew install cask
+brew install emacs cask
 
 # pointless
-brew install sl
-brew install cowsay
+brew install sl cowsay
 
 # cask stuff
 brew install caskroom/cask/brew-cask
 brew cask alfred link
 brew cask install google-chrome
-
-# exercism stuff
-brew install boost valgrind cmake

@@ -65,6 +65,10 @@ endif
 nnoremap Q noop
 colorscheme flatlandia
 
+let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ctrlp_user_command = 'ag %s -l --nogroup --nocolor --column -g ""'
+let g:ctrlp_use_caching = 0
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#fnamecollapse = 0
