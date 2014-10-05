@@ -7,4 +7,7 @@ cd dotfiles
 git submodule update --init
 ./bootstrap-packages.sh
 ./bootstrap-dotfiles.sh
+
+# and, periodically
+./update-vim-plugins.sh
 ```
