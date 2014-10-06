@@ -51,3 +51,4 @@ brew install sl cowsay
 brew install caskroom/cask/brew-cask
 brew cask alfred link
 brew cask install google-chrome
+brew cask install pgadmin3

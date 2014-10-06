@@ -55,12 +55,21 @@ command! E   :e
 nmap <leader><space> :CtrlP<CR>
 noremap <C-x><C-c> :!tmux confirm kill-session<CR>
 
-function! OverloadedIndent()
-  execute "normal! gg0=G"
-  execute "normal! :%s/\s\+$//e<CR>"
-  call Fussbudget::align()
+function! CleanupWhitespace()
+  %s/\s\+$//ge
 endfunction
-nmap <leader>gg=G call OverloadedIndent()<CR>
+
+function! IndentWholeFile()
+  execute "normal! gg0=G"
+endfunction
+
+function! OverloadedIndent()
+  call CleanupWhitespace()
+  call Fussbudget::align()
+  call IndentWholeFile()
+endfunction
+
+nnoremap gg=G :call OverloadedIndent()<CR>
 
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>

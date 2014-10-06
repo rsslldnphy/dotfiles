@@ -23,7 +23,7 @@ set tabstop=2 shiftwidth=2
 set expandtab
 set backspace=indent,eol,start
 set list
-set listchars=trail:.
+set listchars=tab:\ \ ,trail:.
 set showmatch
 set autoindent
 set smartindent
