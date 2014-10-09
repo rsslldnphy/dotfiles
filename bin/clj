@@ -30,7 +30,11 @@ if [ $? != 0 ] ; then
   fi
 
   if grep -q clojurescript project.clj; then
-    tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR; lein cljsbuild auto"
+    tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR; make cljs"
+  fi
+
+  if grep -q sass Gemfile; then
+    tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR; make sass"
   fi
 
   tmux select-window -t "$PROJECT_NAME-CODE"
