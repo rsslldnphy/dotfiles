@@ -20,7 +20,18 @@ if [ $? != 0 ] ; then
   tmux new-session -s $PROJECT_NAME -n script -d
   tmux rename-window "$PROJECT_NAME-CODE"
   tmux new-window -n "$PROJECT_NAME-REPL"  "cd $PROJECT_DIR && LEIN_REPL_PORT=$NREPL_PORT lein repl"
-  tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR; lein autoexpect"
+
+  if grep -q expectations project.clj; then
+    tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR; lein autoexpect"
+  fi
+
+  if grep -q midje project.clj; then
+    tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR; lein midje :autotest"
+  fi
+
+  if grep -q clojurescript project.clj; then
+    tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR; lein cljsbuild auto"
+  fi
 
   tmux select-window -t "$PROJECT_NAME-CODE"
   tmux send-keys  "cd $PROJECT_DIR; reattach-to-user-namespace -l vim project.clj" C-m

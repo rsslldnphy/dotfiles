@@ -63,13 +63,13 @@ function! IndentWholeFile()
   execute "normal! gg0=G"
 endfunction
 
-function! OverloadedIndent()
+function! CleanupBuffer()
   call CleanupWhitespace()
-  call Fussbudget::align()
   call IndentWholeFile()
+  call Fussbudget::align()
 endfunction
 
-nnoremap gg=G :call OverloadedIndent()<CR>
+nnoremap <leader>c :call CleanupBuffer()<CR>
 
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
