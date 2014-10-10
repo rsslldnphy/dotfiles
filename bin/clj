@@ -35,11 +35,11 @@ tmux new-window -n "$PROJECT_NAME-REPL"  "cd $PROJECT_DIR && LEIN_REPL_PORT=$NRE
 
 # open other stuff in background
 if grep -q expectations project.clj; then
-  tmux new-window -n "$PROJECT_NAME-TEST" "cd $PROJECT_DIR && make watch-expectations"
+  tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR && make watch-expectations"
 fi
 
 if grep -q midje project.clj; then
-  tmux new-window -n "$PROJECT_NAME-TEST" "cd $PROJECT_DIR && make watch-midje"
+  tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR && make watch-midje"
 fi
 
 if grep -q clojurescript project.clj; then
