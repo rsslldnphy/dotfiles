@@ -19,7 +19,6 @@ echo ""
 brew install git hub
 brew install tree
 brew install tmux
-brew install drip                       # for faster jvm startup
 brew install reattach-to-user-namespace # for vim clipboard in tmux
 brew install the_silver_searcher
 

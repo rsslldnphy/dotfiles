@@ -66,7 +66,7 @@ endfunction
 function! CleanupBuffer()
   call CleanupWhitespace()
   call IndentWholeFile()
-  call silent Fussbudget::align()
+  silent call Fussbudget::align()
 endfunction
 
 nnoremap <leader>c :call CleanupBuffer()<CR>

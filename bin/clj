@@ -4,53 +4,55 @@ PROJECT_NAME=`basename $(pwd)`
 PROJECT_DIR=`pwd`
 NREPL_PORT=$(cat .nrepl-port 2> /dev/null || echo 8000)
 
+function tmux-window-index() {
+  tmux list-panes | wc -l
+}
+
 echo ""
 echo "*************************************************************"
 echo "******************* IT'S CLOJURE TIME! **********************"
 echo "*************************************************************"
 echo ""
 echo "Setting up workspace for the $PROJECT_NAME project."
-echo -n "Loading NREPL on port $NREPL_PORT."
-
-say "Its Clojur time!"
+echo "Loading NREPL on port $NREPL_PORT."
 
 tmux has-session -t $PROJECT_NAME &> /dev/null
 
-if [ $? != 0 ] ; then
-  tmux new-session -s $PROJECT_NAME -n script -d
-  tmux rename-window "$PROJECT_NAME-CODE"
-  tmux new-window -n "$PROJECT_NAME-REPL"  "cd $PROJECT_DIR && LEIN_REPL_PORT=$NREPL_PORT lein repl"
+# kill any existing session for this project
+if [ $? == 0 ] ; then
+  tmux kill-session $PROJECT_NAME
+fi
 
-  if grep -q expectations project.clj; then
-    tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR; lein autoexpect"
-  fi
+# create session
+tmux new-session -s $PROJECT_NAME -n script -d
+tmux rename-window "$PROJECT_NAME-CODE"
 
-  if grep -q midje project.clj; then
-    tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR; lein midje :autotest"
-  fi
+# open vim
+tmux send-keys  "cd $PROJECT_DIR; reattach-to-user-namespace -l vim project.clj" C-m
 
-  if grep -q clojurescript project.clj; then
-    tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR; make cljs"
-  fi
+# start nrepl
+tmux new-window -n "$PROJECT_NAME-REPL"  "cd $PROJECT_DIR && LEIN_REPL_PORT=$NREPL_PORT lein repl"
 
-  if grep -q sass Gemfile; then
-    tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR; make sass"
-  fi
+# open other stuff in background
+if grep -q expectations project.clj; then
+  tmux new-window -n "$PROJECT_NAME-TEST" "cd $PROJECT_DIR && make watch-expectations"
+fi
 
-  tmux select-window -t "$PROJECT_NAME-CODE"
-  tmux send-keys  "cd $PROJECT_DIR; reattach-to-user-namespace -l vim project.clj" C-m
+if grep -q midje project.clj; then
+  tmux new-window -n "$PROJECT_NAME-TEST" "cd $PROJECT_DIR && make watch-midje"
+fi
 
-  say "Loading n repple on port $NREPL_PORT"
+if grep -q clojurescript project.clj; then
+  tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR && make watch-cljs"
+fi
 
-  while ! nc -z localhost $NREPL_PORT; do echo -n '.'; say "cough"; sleep 1; done
-  say "phew, finally. lets hack on $PROJECT_NAME"
-  echo ""
-
-  tmux send-keys ":Connect nrepl://localhost:$NREPL_PORT" C-m C-m
+if grep -q sass Gemfile; then
+  tmux new-window -n "$PROJECT_NAME-SASS" "cd $PROJECT_DIR && make watch-sass"
 fi
 
 tmux bind r select-window -t "$PROJECT_NAME-REPL"
 tmux bind t select-window -t "$PROJECT_NAME-TESTS"
 tmux bind c select-window -t "$PROJECT_NAME-CODE"
 
+tmux select-window -t "$PROJECT_NAME-CODE"
 tmux attach -t $PROJECT_NAME
