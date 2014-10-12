@@ -11,5 +11,7 @@ let g:projectionist_heuristics = {
       \  '*.clj': {
       \    'src/*.clj': {'alternate': 'test/{}_test.clj'},
       \    'test/*_test.clj': {'alternate': 'src/{}.clj'},
+      \    'src-clj/*.clj': {'alternate': 'test-clj/{}_test.clj'},
+      \    'test-clj/*_test.clj': {'alternate': 'src-clj/{}.clj'},
       \  },
       \}

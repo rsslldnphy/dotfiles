@@ -21,6 +21,7 @@ brew install tree
 brew install tmux
 brew install reattach-to-user-namespace # for vim clipboard in tmux
 brew install the_silver_searcher
+brew install gpg gpg-agent
 
 # languages
 brew install leiningen
