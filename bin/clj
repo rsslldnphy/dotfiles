@@ -11,7 +11,9 @@ fi
 
 # create session
 LAST_MODIFIED_FILE=$(find . -name "*.clj" | xargs ls -1t | head -n1 | sed 's/\.\///')
-tmux new-session -d -s $PROJECT_NAME -n "$PROJECT_NAME-CODE" "cd $PROJECT_DIR; reattach-to-user-namespace -l vim $LAST_MODIFIED_FILE"
+tmux new-session -d -s $PROJECT_NAME
+tmux rename-window "$PROJECT_NAME-CODE"
+tmux send-keys "cd $PROJECT_DIR; reattach-to-user-namespace -l vim $LAST_MODIFIED_FILE" C-m C-m
 
 # start nrepl
 tmux new-window -n "$PROJECT_NAME-REPL" "cd $PROJECT_DIR && lein repl"
