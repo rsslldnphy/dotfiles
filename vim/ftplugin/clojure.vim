@@ -15,3 +15,26 @@ let g:projectionist_heuristics = {
       \    'test-clj/*_test.clj': {'alternate': 'src-clj/{}.clj'},
       \  },
       \}
+
+" if grep -q expectations project.clj; then
+"   tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR && make watch-expectations"
+" fi
+"
+" if grep -q midje project.clj; then
+"   tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR && make watch-midje"
+" fi
+"
+" if grep -q clojurescript project.clj; then
+"   tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR && make watch-cljs"
+" fi
+"
+" if grep -q sass Gemfile; then
+"   tmux new-window -n "$PROJECT_NAME-SASS" "cd $PROJECT_DIR && make watch-sass"
+" fi
+"
+" tmux bind r select-window -t "$PROJECT_NAME-REPL"
+" tmux bind t select-window -t "$PROJECT_NAME-TESTS"
+" tmux bind c select-window -t "$PROJECT_NAME-CODE"
+"
+" tmux select-window -t "$PROJECT_NAME-CODE"
+" tmux attach -t $PROJECT_NAME

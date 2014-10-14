@@ -1,58 +1,27 @@
 #!/bin/bash
 
-PROJECT_NAME=`basename $(pwd)`
-PROJECT_DIR=`pwd`
-NREPL_PORT=$(cat .nrepl-port 2> /dev/null || echo 8000)
-
-function tmux-window-index() {
-  tmux list-panes | wc -l
-}
-
-echo ""
-echo "*************************************************************"
-echo "******************* IT'S CLOJURE TIME! **********************"
-echo "*************************************************************"
-echo ""
-echo "Setting up workspace for the $PROJECT_NAME project."
-echo "Loading NREPL on port $NREPL_PORT."
-
-tmux has-session -t $PROJECT_NAME &> /dev/null
+PROJECT_DIR=$(pwd)
+PROJECT_NAME=$(basename $PROJECT_DIR)
 
 # kill any existing session for this project
+tmux has-session -t $PROJECT_NAME &> /dev/null
 if [ $? == 0 ] ; then
   tmux kill-session $PROJECT_NAME
 fi
 
 # create session
-tmux new-session -s $PROJECT_NAME -n script -d
-tmux rename-window "$PROJECT_NAME-CODE"
-
-# open vim
-tmux send-keys  "cd $PROJECT_DIR; reattach-to-user-namespace -l vim project.clj" C-m
+LAST_MODIFIED_FILE=$(find . -name "*.clj" | xargs ls -1t | head -n1 | sed 's/\.\///')
+tmux new-session -d -s $PROJECT_NAME -n "$PROJECT_NAME-CODE" "cd $PROJECT_DIR; reattach-to-user-namespace -l vim $LAST_MODIFIED_FILE"
 
 # start nrepl
-tmux new-window -n "$PROJECT_NAME-REPL"  "cd $PROJECT_DIR && LEIN_REPL_PORT=$NREPL_PORT lein repl"
+tmux new-window -n "$PROJECT_NAME-REPL" "cd $PROJECT_DIR && lein repl"
 
-# open other stuff in background
-if grep -q expectations project.clj; then
-  tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR && make watch-expectations"
-fi
+# start in vim's window
+tmux select-window -t "$PROJECT_NAME-CODE"
 
-if grep -q midje project.clj; then
-  tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR && make watch-midje"
-fi
-
-if grep -q clojurescript project.clj; then
-  tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR && make watch-cljs"
-fi
-
-if grep -q sass Gemfile; then
-  tmux new-window -n "$PROJECT_NAME-SASS" "cd $PROJECT_DIR && make watch-sass"
-fi
-
+# setup project-specific bindings
 tmux bind r select-window -t "$PROJECT_NAME-REPL"
 tmux bind t select-window -t "$PROJECT_NAME-TESTS"
 tmux bind c select-window -t "$PROJECT_NAME-CODE"
 
-tmux select-window -t "$PROJECT_NAME-CODE"
-tmux attach -t $PROJECT_NAME
+tmux attach-session -t $PROJECT_NAME
