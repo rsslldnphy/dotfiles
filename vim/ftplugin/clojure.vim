@@ -16,25 +16,33 @@ let g:projectionist_heuristics = {
       \  },
       \}
 
-" if grep -q expectations project.clj; then
-"   tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR && make watch-expectations"
-" fi
-"
-" if grep -q midje project.clj; then
-"   tmux new-window -n "$PROJECT_NAME-TESTS" "cd $PROJECT_DIR && make watch-midje"
-" fi
-"
-" if grep -q clojurescript project.clj; then
-"   tmux new-window -n "$PROJECT_NAME-CLJSBUILD" "cd $PROJECT_DIR && make watch-cljs"
-" fi
-"
-" if grep -q sass Gemfile; then
-"   tmux new-window -n "$PROJECT_NAME-SASS" "cd $PROJECT_DIR && make watch-sass"
-" fi
-"
-" tmux bind r select-window -t "$PROJECT_NAME-REPL"
-" tmux bind t select-window -t "$PROJECT_NAME-TESTS"
-" tmux bind c select-window -t "$PROJECT_NAME-CODE"
-"
-" tmux select-window -t "$PROJECT_NAME-CODE"
-" tmux attach -t $PROJECT_NAME
+function! s:ProjectName()
+  return fnamemodify(getcwd(), ":t")
+endfunction
+
+function! s:ProjectDir()
+  return getcwd()
+endfunction
+
+function! s:Midje()
+  execute "!tmux new-window -d -n \"" . s:ProjectName() . "-TESTS\" \"cd " . s:ProjectDir() . " && make watch-midje\""
+endfunction
+
+function! s:Expectations()
+  execute "!tmux new-window -d -n \"" . s:ProjectName() . "-TESTS\" \"cd " . s:ProjectDir() . " && make watch-expect\""
+endfunction
+
+function! s:Cljs()
+  execute "!tmux new-window -d -n \"" . s:ProjectName() . "-CLJS\" \"cd " . s:ProjectDir() . " && make watch-cljs\""
+endfunction
+
+function! s:Sass()
+  execute "!tmux new-window -d -n \"" . s:ProjectName() . "-SASS\" \"cd " . s:ProjectDir() . " && make watch-sass\""
+endfunction
+
+command! Midje silent call s:Midje() | execute ":redraw!"
+command! Expectations silent call s:Expectations() | execute ":redraw!"
+command! Cljs silent call s:Cljs() | execute ":redraw!"
+command! Sass silent call s:Sass() | execute ":redraw!"
+
+map <leader>t :Midje<CR>
