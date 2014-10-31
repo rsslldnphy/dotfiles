@@ -31,6 +31,8 @@ ensure-link vimrc
 
 ensure-link bin
 ensure-link tmux.conf
+ensure-link slate
+
 
 mkdir -p ~/.lein
 if [ ! -L $HOME_DIR/.lein/profiles.clj ]; then

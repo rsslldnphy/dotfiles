@@ -529,9 +529,11 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 104 924 485 0 0 1440 878 </string>
+	<string>269 104 924 485 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 227 890 651 0 0 1440 878 </string>
+	<string>0 0 1440 900 0 0 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>183 68 890 651 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1246,6 +1248,8 @@
 			<string>/Users/rsslldnphy</string>
 		</dict>
 	</array>
+	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<true/>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1308,7 +1312,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-09-18T21:09:22Z</date>
+	<date>2014-10-28T09:01:42Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1339,12 +1343,20 @@
 	<true/>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
+	<key>WebKitDefaultFontSize</key>
+	<integer>11</integer>
+	<key>WebKitStandardFont</key>
+	<string>.Helvetica Neue DeskInterface</string>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
 	<integer>0</integer>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findIgnoreCase_iTerm</key>
+	<true/>
+	<key>findRegex_iTerm</key>
+	<false/>
 	<key>iTerm Version</key>
 	<string>2.0</string>
 </dict>

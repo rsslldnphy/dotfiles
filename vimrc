@@ -9,3 +9,5 @@ source ~/.vim/scripts/mappings.vim
 source ~/.vim/scripts/nerdtree.vim
 source ~/.vim/scripts/ruby.vim
 source ~/.vim/scripts/erlang.vim
+
+set lispwords+=defroutes,fact,facts,defproject,describe,it,context,GET,POST,UPDATE,DELETE,ANY,PUT,go-loop

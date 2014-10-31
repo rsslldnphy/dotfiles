@@ -1,5 +1,3 @@
-setlocal lispwords+=defroutes,fact,facts,defproject,describe,it
-
 let g:paredit_electric_return = 0
 
 noremap ,, :A<CR>
@@ -24,6 +22,10 @@ function! s:ProjectDir()
   return getcwd()
 endfunction
 
+function! s:Repl()
+  execute "!tmux new-window -d -n \"" . s:ProjectName() . "-REPL\" \"cd " . s:ProjectDir() . " && lein repl\""
+endfunction
+
 function! s:Midje()
   execute "!tmux new-window -d -n \"" . s:ProjectName() . "-TESTS\" \"cd " . s:ProjectDir() . " && make watch-midje\""
 endfunction
@@ -40,6 +42,7 @@ function! s:Sass()
   execute "!tmux new-window -d -n \"" . s:ProjectName() . "-SASS\" \"cd " . s:ProjectDir() . " && make watch-sass\""
 endfunction
 
+command! Repl silent call s:Repl() | execute ":redraw!"
 command! Midje silent call s:Midje() | execute ":redraw!"
 command! Expectations silent call s:Expectations() | execute ":redraw!"
 command! Cljs silent call s:Cljs() | execute ":redraw!"

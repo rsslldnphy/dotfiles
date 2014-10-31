@@ -51,7 +51,7 @@ set ignorecase
 "" Command mode
 set wildmenu
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.bundle,coverage,.DS_Store,_html,.git,*.rbc,*.class,.svn,vendor/gems/*,vendor/rails/*,target
+set wildignore+=*.o,*.obj,.bundle,coverage,.DS_Store,_html,.git,*.rbc,*.class,.svn,vendor/gems/*,vendor/rails/*,target/*
 set cmdheight=2
 set laststatus=2
 set nofoldenable

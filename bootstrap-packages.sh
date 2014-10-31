@@ -21,7 +21,7 @@ brew install tree
 brew install tmux
 brew install reattach-to-user-namespace # for vim clipboard in tmux
 brew install the_silver_searcher
-brew install gpg gpg-agent
+brew install watch
 
 # languages
 brew install leiningen
@@ -33,6 +33,7 @@ brew install python
 brew install nodejs npm # why??
 brew install scala sbt
 brew install boost valgrind cmake
+brew install phantomjs
 
 brew tap homebrew/science
 brew install r

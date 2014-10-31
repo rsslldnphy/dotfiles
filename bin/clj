@@ -16,7 +16,7 @@ tmux rename-window "$PROJECT_NAME-CODE"
 tmux send-keys "cd $PROJECT_DIR; reattach-to-user-namespace -l vim $LAST_MODIFIED_FILE" C-m C-m
 
 # start nrepl
-tmux new-window -n "$PROJECT_NAME-REPL" "cd $PROJECT_DIR && lein repl"
+# tmux new-window -n "$PROJECT_NAME-REPL" "cd $PROJECT_DIR && lein repl"
 
 # start in vim's window
 tmux select-window -t "$PROJECT_NAME-CODE"

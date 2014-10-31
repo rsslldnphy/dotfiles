@@ -64,8 +64,8 @@ function! IndentWholeFile()
 endfunction
 
 function! CleanupBuffer()
-  call CleanupWhitespace()
-  call IndentWholeFile()
+  silent call CleanupWhitespace()
+  silent call IndentWholeFile()
   silent call Fussbudget::align()
 endfunction
 
@@ -90,3 +90,5 @@ nnoremap <silent> <leader><C-s> :call PareditSplice()<CR>
 inoremap <silent> <C-h> <C-r>=<C-u>PareditMoveLeft()<CR><bs><right>
 inoremap <silent> <C-l> <C-r>=<C-u>PareditMoveRight()<CR><bs><right>
 inoremap <silent> <C-s> <C-r>=<C-u>PareditSplice()<CR><bs>
+
+noremap <C-e> $
