@@ -1,8 +1,10 @@
 function qq {
   local repo="$HOME/Code/$1"
   local course="$HOME/Courses/$1"
-  if   [ -e $repo ] && [ -d $repo  ]; then cd $repo;
+  local talk="$HOME/Talks/$1"
+  if   [ -e $repo ]   && [ -d $repo  ];  then cd $repo;
   elif [ -e $course ] && [ -d $course ]; then cd $course;
+  elif [ -e $talk ]   && [ -d $talk ];   then cd $talk;
   else echo "Repo or course not found: $1"; return 1;
   fi
 }
@@ -12,7 +14,8 @@ _qq() {
     cur="${COMP_WORDS[COMP_CWORD]}"
     projects=$(cd ~/Code ; ls -d */. | sed 's/\/\.//g')
     courses=$(cd ~/Courses ; ls -d */. | sed 's/\/\.//g')
-    COMPREPLY=($(compgen -W "${projects} ${courses}" -- ${cur}))
+    talks=$(cd ~/Talks ; ls -d */. | sed 's/\/\.//g')
+    COMPREPLY=($(compgen -W "${projects} ${courses} ${talks}" -- ${cur}))
 }
 
 complete -F _qq qq

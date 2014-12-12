@@ -12,4 +12,4 @@ alias gst='git status'
 
 alias git='hub'
 alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-alias f='fab -f ~/Code/puppet/fabfile'
+alias f='fab -f ~/Code/infra/fabric/fabfile'
