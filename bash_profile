@@ -1,9 +1,6 @@
-## aliases
+source ~/.aliases
+source ~/.prompt
+source ~/.bash/git-completion.sh
+source ~/.bash/qq.sh
 
-# vim
-alias e=vim
-alias :q=exit
-
-# git
-alias gst='git status'
-alias git='hub'
+export PATH=$HOME/.bin:$PATH
