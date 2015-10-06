@@ -1,5 +1,7 @@
 execute pathogen#infect()
 
+"" GENERAL SETTINGS
+
 set nocompatible
 set autoindent
 set autoread
@@ -55,6 +57,8 @@ syntax enable
 colorscheme flatlandia
 highlight LineNr ctermfg=grey
 
+"" MAPPINGS
+
 let mapleader      = ","
 let maplocalleader = ","
 let g:mapleader    = ","
@@ -92,3 +96,17 @@ command! Wa  :wa
 command! Wq  :wq
 command! Wqa :wqa
 command! E   :e
+
+"" PLUGIN SETTINGS
+
+"" NERD Tree
+let g:NERDTreeWinPos="left"
+let NERDTreeHighlightCursorline=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+
+"" Rainbow Parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
