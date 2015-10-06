@@ -1,0 +1,3 @@
+[submodule "vim/bundle/flatlandia"]
+	path = vim/bundle/flatlandia
+	url = git@github.com:jordwalke/flatlandia.git
