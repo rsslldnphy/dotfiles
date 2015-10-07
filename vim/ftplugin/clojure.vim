@@ -1,15 +1,19 @@
 "" Projectionist
-nmap ,, :A<CR>
 let g:projectionist_heuristics = {
       \  '*.clj': {
-      \    'src/*.clj': {'alternate': 'test/{}_test.clj'},
-      \    'test/*_test.clj': {'alternate': 'src/{}.clj'},
-      \    'src-clj/*.clj': {'alternate': 'test-clj/{}_test.clj'},
-      \    'test-clj/*_test.clj': {'alternate': 'src-clj/{}.clj'},
-      \    'src/cljs/*.cljs': {'alternate': 'test/cljs/{}_test.cljs'},
-      \    'test/cljs/*_test.cljs': {'alternate': 'src/cljs/{}.cljs'},
-      \    'src-cljs/*.cljs': {'alternate': 'test-cljs/{}_test.cljs'},
-      \    'test-cljs/*_test.cljs': {'alternate': 'src-cljs/{}.cljs'},
+      \    'src/*.clj': {
+      \       'alternate': 'test/{}_test.clj',
+      \       'type': 'source',
+      \       'template': ['(ns {dot|hyphenate})',
+      \                    '']
+      \     },
+      \    'test/*_test.clj': {
+      \       'alternate': 'src/{}.clj',
+      \       'type': 'test',
+      \       'template': ['(ns {dot|hyphenate}-test',
+      \                    '  (:require [{dot|hyphenate} :refer :all]',
+      \                    '            [expectations    :refer :all]']
+      \     },
       \  },
       \}
 
@@ -21,4 +25,4 @@ function! RunTests()
   endif
 endfunction
 
-map <leader>t :execute RunTests()<CR>
+map <buffer> <leader>t :execute RunTests()<CR>

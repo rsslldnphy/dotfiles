@@ -1,7 +1,6 @@
 execute pathogen#infect()
 
 "" GENERAL SETTINGS
-
 set nocompatible
 set autoindent
 set autoread
@@ -21,6 +20,7 @@ set expandtab
 set nowrap
 set shiftwidth=2
 set tabstop=2
+set hidden
 set history=200
 set hlsearch
 set ignorecase
@@ -30,7 +30,9 @@ set lazyredraw
 set linebreak
 set list
 set listchars=tab:>\ ,trail:.,extends:>,precedes:<
-
+if exists('+macmeta')
+  set macmeta
+endif
 set mouse=nvi
 set mousemodel=popup
 set number
@@ -73,9 +75,6 @@ inoremap <Up>     <nop>
 inoremap <Down>   <nop>
 inoremap <Left>   <nop>
 inoremap <Right>  <nop>
-
-"" For testing .vimrc
-nmap <leader>t    :source ~/.vimrc<CR>
 
 "" Splits
 nmap <leader>v    :vs<CR>
@@ -136,3 +135,7 @@ let g:rbpt_max = 15
 "" CtrlP
 let g:ctrlp_dont_split = 'nerdtree'
 nmap <leader><space> :CtrlP<CR>
+
+"" Projectionist - see ftplugin files for g:projectionist_heuristics
+nmap ,, :A<CR>
+let g:projectionist_autocreate_alternative_file = 1
