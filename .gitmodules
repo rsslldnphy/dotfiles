@@ -73,3 +73,15 @@
 [submodule "vim/bundle/vagrant"]
 	path = vim/bundle/vagrant
 	url = git@github.com:markcornick/vim-vagrant.git
+[submodule "vim/bundle/sexp"]
+	path = vim/bundle/sexp
+	url = git@github.com:guns/vim-sexp.git
+[submodule "vim/bundle/sexp-bindings-for-normal-people"]
+	path = vim/bundle/sexp-bindings-for-normal-people
+	url = git@github.com:tpope/vim-sexp-mappings-for-regular-people.git
+[submodule "vim/bundle/surround"]
+	path = vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/lfe"]
+	path = vim/bundle/lfe
+	url = git@github.com:lfex/vim-lfe.git

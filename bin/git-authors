@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# save as i.e.: git-authors and set the executable flag
+git ls-tree -r --name-only HEAD -- $1 | grep -v '.txt' | grep -v '.Rdata' | grep -v '.tar.gz' | xargs -n1 git blame \
+ --line-porcelain HEAD |grep  "^author "|sort|uniq -c|sort -nr | sed 's/ author /, /'
+# git ls-tree -r -z --name-only HEAD -- $1 | xargs -0 -n1 git blame \
+#  --line-porcelain HEAD |grep  "^author "|sort|uniq -c|sort -nr | sed 's/ author /, /'

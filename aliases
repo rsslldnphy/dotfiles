@@ -12,4 +12,7 @@ alias gst='git status'
 
 alias git='hub'
 alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-alias f='fab -f ~/Code/infra/fabric/fabfile'
+alias f='fab -f fabric/fabfile'
+alias bw='qq bugs-web'
+alias gitcleanup='git co master && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias doc='eval $(docker-machine env dev)'

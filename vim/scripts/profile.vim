@@ -64,6 +64,7 @@ endif
 
 nnoremap Q noop
 colorscheme flatlandia
+" colorscheme desert
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:ctrlp_user_command = 'ag %s -l --nogroup --nocolor --column -g ""'
@@ -86,3 +87,6 @@ set omnifunc=emoji#complete
 
 autocmd BufRead,BufNewFile nginx*conf* set filetype=nginx
 let NERDTreeIgnore = ['\.pyc$']
+
+autocmd BufNewFile,BufReadPost *.cljx setfiletype=clojure
+autocmd BufNewFile,BufRead,BufReadPost *.md setfiletype=markdown

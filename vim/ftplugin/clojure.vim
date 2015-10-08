@@ -2,6 +2,7 @@ let g:paredit_electric_return = 0
 
 noremap ,, :A<CR>
 map <leader>r :Eval (user/reset)<cr>
+map <leader>R :Eval (user/refresh)<cr>
 map <C-x><C-e> :Eval<cr>
 map <C-c><C-k> :%Eval<cr>
 
@@ -11,6 +12,8 @@ let g:projectionist_heuristics = {
       \    'test/*_test.clj': {'alternate': 'src/{}.clj'},
       \    'src-clj/*.clj': {'alternate': 'test-clj/{}_test.clj'},
       \    'test-clj/*_test.clj': {'alternate': 'src-clj/{}.clj'},
+      \    'src/cljs/*.cljs': {'alternate': 'test/cljs/{}_test.cljs'},
+      \    'test/cljs/*_test.cljs': {'alternate': 'src/cljs/{}.cljs'},
       \    'src-cljs/*.cljs': {'alternate': 'test-cljs/{}_test.cljs'},
       \    'test-cljs/*_test.cljs': {'alternate': 'src-cljs/{}.cljs'},
       \  },
@@ -50,4 +53,5 @@ command! Expectations silent call s:Expectations() | execute ":redraw!"
 command! Cljs silent call s:Cljs() | execute ":redraw!"
 command! Sass silent call s:Sass() | execute ":redraw!"
 
-map <leader>t :Midje<CR>
+command! Expectations execute ":w" | execute ":%Eval" | execute ":Eval (run-tests [*ns*])"
+map <leader>t :Expectations<CR>
