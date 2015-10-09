@@ -76,6 +76,16 @@ inoremap <Down>   <nop>
 inoremap <Left>   <nop>
 inoremap <Right>  <nop>
 
+"" Movement in command mode
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-b> <S-Left>
+cnoremap <C-w> <S-Right>
+
 "" Splits
 nmap <leader>v    :vs<CR>
 nmap <leader>h    :sp<CR>
@@ -134,8 +144,8 @@ let g:rbpt_max = 15
 
 "" Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
-map <C-f> :Ack<space>""<C-b>
-map <leader>f :Ack<space>""<C-b>
+map <C-f> :Ack<space>""<C-h>
+map <leader>f :Ack<space>""<C-h>
 
 "" CtrlP
 let g:ctrlp_user_command = 'ag %s -l --nogroup --nocolor --column -g ""'
