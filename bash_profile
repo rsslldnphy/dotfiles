@@ -1,4 +1,5 @@
 source ~/.aliases
+source ~/.env
 source ~/.prompt
 source ~/.bash/git-completion.sh
 source ~/.bash/qq.sh

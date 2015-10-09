@@ -132,7 +132,14 @@ let g:rbpt_colorpairs = [
       \ ]
 let g:rbpt_max = 15
 
+"" Ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
+map <C-f> :Ack<space>""<C-b>
+map <leader>f :Ack<space>""<C-b>
+
 "" CtrlP
+let g:ctrlp_user_command = 'ag %s -l --nogroup --nocolor --column -g ""'
+let g:ctrlp_use_caching = 0
 let g:ctrlp_dont_split = 'nerdtree'
 nmap <leader><space> :CtrlP<CR>
 
