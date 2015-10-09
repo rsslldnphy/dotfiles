@@ -156,3 +156,20 @@ nmap <leader><space> :CtrlP<CR>
 "" Projectionist - see ftplugin files for g:projectionist_heuristics
 nmap ,, :A<CR>
 let g:projectionist_autocreate_alternative_file = 1
+
+"" Fireplace
+map <C-c><C-k> :%Eval<CR>
+
+function! DockerNREPL(port)
+  if ! exists("g:autoconnected_docker_nrepl") || &cp
+    let g:autoconnected_docker_nrepl = 1
+    let docker_ip = system('docker-machine ip dev')[:-2]
+    exec ":Connect nrepl://" . docker_ip . ":" . a:port . " " . getcwd()
+  endif
+endfunction
+
+if filereadable('.docker-nrepl-port')
+  let docker_nrepl_port=readfile('.docker-nrepl-port')[0]
+  autocmd BufReadPost  *.clj call DockerNREPL(docker_nrepl_port)
+  autocmd BufWritePost *.clj call DockerNREPL(docker_nrepl_port)
+endif
