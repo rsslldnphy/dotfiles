@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+open http://www.emoji-cheat-sheet.com

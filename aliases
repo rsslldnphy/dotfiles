@@ -6,3 +6,5 @@ alias :q=exit
 alias gst='git status'
 alias git='hub'
 
+# docker
+alias docker-init='[ "$(docker-machine status dev)" == "Stopped" ] && docker-machine start dev; eval $(docker-machine env dev);'
