@@ -17,6 +17,7 @@ set dictionary+=/usr/share/dict/words
 set display=lastline
 set encoding=utf-8
 set expandtab
+set exrc
 set nowrap
 set shiftwidth=2
 set tabstop=2
@@ -39,6 +40,7 @@ set number
 set pastetoggle=<F2>
 set printoptions=paper:letter
 set scrolloff=1
+set secure
 set shiftround
 set showcmd         " Show (partial) command in status line.
 set showmatch       " Show matching brackets.
@@ -151,6 +153,7 @@ map <leader>f :Ack<space>""<C-h>
 let g:ctrlp_user_command = 'ag %s -l --nogroup --nocolor --column -g ""'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_dont_split = 'nerdtree'
+let g:ctrlp_working_path_mode = 0
 nmap <leader><space> :CtrlP<CR>
 
 "" Projectionist - see ftplugin files for g:projectionist_heuristics
@@ -161,10 +164,13 @@ let g:projectionist_autocreate_alternative_file = 1
 map <C-c><C-k> :%Eval<CR>
 
 function! DockerNREPL(port)
-  if ! exists("g:autoconnected_docker_nrepl") || &cp
-    let g:autoconnected_docker_nrepl = 1
-    let docker_ip = system('docker-machine ip dev')[:-2]
-    exec ":Connect nrepl://" . docker_ip . ":" . a:port . " " . getcwd()
+  if filereadable(@%) && (! exists("g:autoconnected_docker_nrepl") || &cp)
+    try
+      let docker_ip = system('docker-machine ip dev')[:-2]
+      exec ":Connect nrepl://" . docker_ip . ":" . a:port . " " . getcwd()
+      let g:autoconnected_docker_nrepl = 1
+    catch "nREPL Connection Error: [Errno 61] Connection refused"
+    endtry
   endif
 endfunction
 
@@ -173,3 +179,14 @@ if filereadable('.docker-nrepl-port')
   autocmd BufReadPost  *.clj call DockerNREPL(docker_nrepl_port)
   autocmd BufWritePost *.clj call DockerNREPL(docker_nrepl_port)
 endif
+
+"" Fussbudget
+function! CleanupWhitespace()
+  try
+    exec ':%s/\s\+$//g'
+  catch "E486: Pattern not found: \s\+$"
+  endtry
+endfunction
+
+map <leader>c :call CleanupWhitespace<CR>
+autocmd Filetype clojure map <leader>c :call CleanupWhitespace() \| call Fussbudget#align()<CR>

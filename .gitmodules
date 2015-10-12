@@ -46,3 +46,6 @@
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = git@github.com:ervandew/supertab.git
+[submodule "vim/bundle/clojure-fussbudget"]
+	path = vim/bundle/clojure-fussbudget
+	url = git@github.com:rsslldnphy/clojure-fussbudget.vim.git
