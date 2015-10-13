@@ -6,4 +6,4 @@ source ~/.bash/qq.sh
 
 export PATH=$HOME/.bin:/usr/local/bin:$PATH
 
-eval $(docker-machine env dev)
+eval $(docker-machine env dev 2> /dev/null)
