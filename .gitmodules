@@ -49,3 +49,6 @@
 [submodule "vim/bundle/clojure-fussbudget"]
 	path = vim/bundle/clojure-fussbudget
 	url = git@github.com:rsslldnphy/clojure-fussbudget.vim.git
+[submodule "vim/bundle/wordpress"]
+	path = vim/bundle/wordpress
+	url = git@github.com:dsawardekar/wordpress.vim.git
