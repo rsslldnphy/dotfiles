@@ -52,3 +52,6 @@
 [submodule "vim/bundle/wordpress"]
 	path = vim/bundle/wordpress
 	url = git@github.com:dsawardekar/wordpress.vim.git
+[submodule "vim/bundle/vim-octave"]
+	path = vim/bundle/vim-octave
+	url = git://github.com/jvirtanen/vim-octave.git

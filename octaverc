@@ -1,0 +1,11 @@
+setenv ("GNUTERM", "X11")
+
+# below is optional; changes the prompt to two chevron
+# and gets rid of the long Octave x.x.x >> prompt
+PS1('❯❯ ')
+
+EDITOR('vim > /dev/tty 2>&1 < /dev/tty %s')
+
+edit mode async
+edit home .
+more off

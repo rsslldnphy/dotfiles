@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-DOTFILES=(ackrc aliases bash bash_profile bin cvsignore gitconfig inputrc prompt vimrc vim);
+DOTFILES=(ackrc aliases bash bash_profile bin cvsignore gitconfig inputrc octaverc prompt vimrc vim);
 DOTFILES_DIR="$(cd "$(dirname "$0")"; pwd)"
 
 echo "*****************************************"
