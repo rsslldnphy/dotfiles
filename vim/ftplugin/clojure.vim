@@ -51,6 +51,8 @@ function! RunTests()
   :%Eval
   if search("expectations")
     :Eval (run-tests [*ns*])
+  elseif search("clojure.test")
+    :Eval (run-tests)
   endif
 endfunction
 

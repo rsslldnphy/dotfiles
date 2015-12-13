@@ -7,4 +7,5 @@ alias gst='git status'
 alias git='hub'
 
 # docker
-alias docker-init='[ "$(docker-machine status dev)" == "Stopped" ] && docker-machine start dev; eval $(docker-machine env dev);'
+alias docker-init='[ "$(docker-machine status default)" == "Stopped" ] && docker-machine start default; eval $(docker-machine env default);'
+alias dato='/Applications/Dato\ Launcher.app/Contents/MacOS/Electron'

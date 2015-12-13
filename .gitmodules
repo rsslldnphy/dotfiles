@@ -55,3 +55,9 @@
 [submodule "vim/bundle/vim-octave"]
 	path = vim/bundle/vim-octave
 	url = git://github.com/jvirtanen/vim-octave.git
+[submodule "vim/bundle/fzf"]
+	path = vim/bundle/fzf
+	url = git@github.com:junegunn/fzf.vim.git
+[submodule "vim/bundle/vim-reveal"]
+	path = vim/bundle/vim-reveal
+	url = git@github.com:blindFS/vim-reveal.git

@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+# launchctl load ~/Library/LaunchAgents/homebrew.mxcl.rethinkdb.plist
+case $1 in
+  start)   launchctl load ~/Library/LaunchAgents/homebrew.mxcl.rethinkdb.plist ;;
+  stop)    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.rethinkdb.plist ;;
+  restart) rethink stop && rethink start                                       ;;
+  *)       echo "Unknown command: $1"                                          ;;
+esac

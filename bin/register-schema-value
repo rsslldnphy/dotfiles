@@ -1,0 +1,21 @@
+SCHEMA_REGISTRY_URL=http://$(docker-machine ip default):8081
+
+function to_json_string () {
+    perl -pe 's|"|\\"|g'
+}
+
+function rest_schema () {
+    cat <<EOF
+{
+  "schema": "$(cat $1 |to_json_string)"
+}
+EOF
+}
+
+function schema_name () {
+    echo $(basename $1 .json)
+}
+
+echo $1
+
+rest_schema $1 |curl -v -H "Content-Type: application/json" -d @- $SCHEMA_REGISTRY_URL/subjects/$(schema_name $1)-value/versions

@@ -191,4 +191,6 @@ endfunction
 autocmd BufReadPost *.edn set filetype=clojure
 
 map <leader>c :call CleanupWhitespace<CR>
-autocmd Filetype clojure map <leader>c :call CleanupWhitespace() \| call Fussbudget()<CR>
+autocmd Filetype clojure map <leader>c :call CleanupWhitespace() \| :call Fussbudget()<CR>
+
+set rtp+=$HOME/Code/fzf
