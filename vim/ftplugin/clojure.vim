@@ -51,9 +51,20 @@ function! RunTests()
   :%Eval
   if search("expectations")
     :Eval (run-tests [*ns*])
+  elseif search("clojure.test.check")
+    :Eval (binding [clojure.test.check.clojure-test/*default-test-count* 20] (run-tests))
   elseif search("clojure.test")
     :Eval (run-tests)
   endif
 endfunction
 
+function! DockerNREPL()
+  let docker_nrepl_port=readfile('.docker-nrepl-port')[0]
+  let docker_ip = system('docker-machine ip default')[:-2]
+  exec ":Connect nrepl://" . docker_ip . ":" . docker_nrepl_port . " " . getcwd()
+endfunction
+
+command! DockerNREPL :call DockerNREPL()
+
 map <buffer> <leader>t :execute RunTests()<CR>
+map <buffer> <leader>r :Eval (user/reset)<CR>

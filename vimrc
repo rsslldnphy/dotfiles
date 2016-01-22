@@ -36,6 +36,7 @@ if exists('+macmeta')
 endif
 set mouse=nvi
 set mousemodel=popup
+set noswapfile
 set number
 set pastetoggle=<F2>
 set printoptions=paper:letter
@@ -163,22 +164,22 @@ let g:projectionist_autocreate_alternative_file = 1
 "" Fireplace
 map <C-c><C-k> :%Eval<CR>
 
-function! DockerNREPL(port)
-  if filereadable(@%) && (! exists("g:autoconnected_docker_nrepl") || &cp)
-    try
-      let docker_ip = system('docker-machine ip dev')[:-2]
-      exec ":Connect nrepl://" . docker_ip . ":" . a:port . " " . getcwd()
-      let g:autoconnected_docker_nrepl = 1
-    catch "nREPL Connection Error: [Errno 61] Connection refused"
-    endtry
-  endif
-endfunction
+" function! DockerNREPL(port)
+"   if filereadable(@%) && (! exists("g:autoconnected_docker_nrepl") || &cp)
+"     try
+"       let docker_ip = system('docker-machine ip dev')[:-2]
+"       exec ":Connect nrepl://" . docker_ip . ":" . a:port . " " . getcwd()
+"       let g:autoconnected_docker_nrepl = 1
+"     catch "nREPL Connection Error: [Errno 61] Connection refused"
+"     endtry
+"   endif
+" endfunction
 
-if filereadable('.docker-nrepl-port')
-  let docker_nrepl_port=readfile('.docker-nrepl-port')[0]
-  autocmd BufReadPost  *.clj call DockerNREPL(docker_nrepl_port)
-  autocmd BufWritePost *.clj call DockerNREPL(docker_nrepl_port)
-endif
+" if filereadable('.docker-nrepl-port')
+"   let docker_nrepl_port=readfile('.docker-nrepl-port')[0]
+"   autocmd BufReadPost  *.clj call DockerNREPL(docker_nrepl_port)
+"   autocmd BufWritePost *.clj call DockerNREPL(docker_nrepl_port)
+" endif
 
 "" Fussbudget
 function! CleanupWhitespace()
@@ -191,6 +192,6 @@ endfunction
 autocmd BufReadPost *.edn set filetype=clojure
 
 map <leader>c :call CleanupWhitespace<CR>
-autocmd Filetype clojure map <leader>c :call CleanupWhitespace() \| :call Fussbudget()<CR>
+autocmd Filetype clojure map <leader>c :call CleanupWhitespace()<CR>
 
 set rtp+=$HOME/Code/fzf
