@@ -25,10 +25,12 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
+     clojure
      emacs-lisp
      git
      markdown
      org
+     osx
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -237,6 +239,8 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
+  (setq vc-follow-symlinks nil)
+  (setq inhibit-splash-screen t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -245,8 +249,17 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-l") 'evil-window-right)
   (global-set-key (kbd "C-h") 'evil-window-left)
-  (global-set-key (kbd "C-j") 'evil-window-up)
-  (global-set-key (kbd "C-k") 'evil-window-down)
+  (global-set-key (kbd "C-k") 'evil-window-up)
+  (global-set-key (kbd "C-j") 'evil-window-down)
+  (define-key evil-normal-state-map (kbd ", <SPC>") 'projectile-find-file)
+  (evil-global-set-key 'normal (kbd ",,") 'projectile-toggle-between-implementation-and-test)
+  (setq evil-move-beyond-eol t)
+  (setq indent-tabs-mode nil)
+  (setq tab-width 2)
+  (put-clojure-indent ':import :defn)
+  (put-clojure-indent ':require-macros :defn)
+  (put-clojure-indent ':require :defn)
+  (put-clojure-indent 'defrecord :defn)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
