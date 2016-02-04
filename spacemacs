@@ -251,15 +251,26 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-h") 'evil-window-left)
   (global-set-key (kbd "C-k") 'evil-window-up)
   (global-set-key (kbd "C-j") 'evil-window-down)
+  (global-set-key (kbd "C-6") 'previous-buffer)
   (define-key evil-normal-state-map (kbd ", <SPC>") 'projectile-find-file)
   (evil-global-set-key 'normal (kbd ",,") 'projectile-toggle-between-implementation-and-test)
   (setq evil-move-beyond-eol t)
   (setq indent-tabs-mode nil)
   (setq tab-width 2)
-  (put-clojure-indent ':import :defn)
-  (put-clojure-indent ':require-macros :defn)
-  (put-clojure-indent ':require :defn)
-  (put-clojure-indent 'defrecord :defn)
+
+   (add-hook
+    'clojure-mode-hook
+    (lambda ()
+      (put-clojure-indent ':import :defn)
+      (put-clojure-indent ':require-macros :defn)
+      (put-clojure-indent ':require :defn)
+      (put-clojure-indent 'defrecord :defn)))
+
+   (defun create-shell ()
+     "creates a shell with a given name"
+     (interactive);; "Prompt\n shell name:")
+     (let ((shell-name (read-string "shell name: " nil)))
+       (shell (concat "*" shell-name "*"))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

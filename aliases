@@ -1,5 +1,5 @@
 # vim
-alias e=emacsclient
+alias e=vi
 alias :q=exit
 
 # git

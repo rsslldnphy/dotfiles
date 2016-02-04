@@ -54,7 +54,7 @@ function! RunTests()
   elseif search("clojure.test.check")
     :Eval (binding [clojure.test.check.clojure-test/*default-test-count* 20] (run-tests))
   elseif search("clojure.test")
-    :Eval (run-tests)
+    :Eval (clojure.test/run-tests)
   endif
 endfunction
 
