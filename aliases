@@ -1,5 +1,5 @@
 # vim
-alias e=vi
+alias e=emacs
 alias :q=exit
 
 # git
@@ -13,3 +13,4 @@ alias dato='/Applications/Dato\ Launcher.app/Contents/MacOS/Electron'
 alias bi='bundle install'
 alias bu='bundle update'
 alias be='bundle exec'
+alias riemann='~/Applications/riemann-0.2.10/bin/riemann'
