@@ -1,21 +1,30 @@
 #!/bin/bash -e
 
-DOTFILES=(ackrc aliases bash bash_profile bin cvsignore gitconfig inputrc octaverc prompt spacemacs vimrc vim);
-DOTFILES_DIR="$(cd "$(dirname "$0")"; pwd)"
-
 echo "*****************************************"
 echo "******* rsslldnphy/dotfiles setup *******"
 echo "*****************************************"
 echo
 
 echo "*********** Linking dotfiles ************"
+DOTFILES=(ackrc aliases bash bash_profile bin cvsignore gitconfig inputrc octaverc prompt spacemacs vimrc vim);
+DOTFILES_DIR="$(cd "$(dirname "$0")"; pwd)"
 for f in "${DOTFILES[@]}"; do
   source="$DOTFILES_DIR/$f";
   dest="$HOME/.$f";
   printf 'Linking %-41s to %s\n' $source $dest;
   [ -L $dest ] || ln -s $source $dest;
 done;
-echo
+echo;
+
+echo "*********** Linking dotfiles ************"
+EMACSFILES=(init.el Cask);
+for f in "${EMACSFILES[@]}"; do
+  source="$DOTFILES_DIR/$f";
+  dest="$HOME/.emacs.d/$f";
+  printf 'Linking %-41s to %s\n' $source $dest;
+  [ -L $dest ] || ln -s $source $dest;
+done;
+cd $HOME/.emacs.d/ && cask install
 
 echo "*********** Customizing OSX *************"
 echo "Use tap-to-click on login screen"

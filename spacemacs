@@ -265,7 +265,8 @@ layers configuration. You are free to put any user code."
       (put-clojure-indent ':import :defn)
       (put-clojure-indent ':require-macros :defn)
       (put-clojure-indent ':require :defn)
-      (put-clojure-indent 'defrecord :defn)))
+      (put-clojure-indent 'defrecord :defn)
+      ))
 
    (defun create-shell ()
      "creates a shell with a given name"
