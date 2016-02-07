@@ -13,6 +13,7 @@
 (depends-on "evil")
 (depends-on "evil-leader")
 (depends-on "evil-nerd-commenter")
+(depends-on "ffap")
 (depends-on "flx-ido")
 (depends-on "idomenu")
 (depends-on "ido-select-window")

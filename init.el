@@ -3,25 +3,20 @@
 (require 'pallet)
 (pallet-mode t)
 
-(load-theme 'ujelly t)
-
-(setq dotfiles-dir "~/.emacs.d/")
-(setq vc-follow-symlinks nil)
-(setq inhibit-startup-screen t) 
-
-(global-linum-mode 1)
-(setq linum-format "%d ")
-
 (require 'better-defaults)
 
-(require 'dired-details+)
+(setq dotfiles-dir "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/customizations/")
+
 (setq dired-details-initially-hide t)
-(setq dired-details-hidden-string "")
+
+
+(require 'dired-details+)
+
+(load-theme 'ujelly t)
 
 (setq insert-directory-program "/usr/local/bin/gls")
 (setq dired-listing-switches "-aBhl --group-directories-first")
-
-(add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -29,6 +24,7 @@
 (ansi-color-for-comint-mode-on)
 
 (setq visible-bell t
+      vc-follow-symlinks nil
       fringe-mode (cons 4 0)
       echo-keystrokes 0.1
       font-lock-maximum-decoration t
@@ -67,23 +63,18 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (projectile-global-mode)
+(setq projectile-switch-project-action '(lambda () (dired projectile-project-root)))
+
 (set-default 'truncate-lines t)
 
 (require 'evil)
 
 (setq evil-shift-width 2)
 
-(defun vsplit ()
-  (interactive)
-  (split-window-right))
 
-(defun best-choice-find-file ()
-  (interactive)
-  (condition-case nil
-      (projectile-find-file)
-    ('error (ido-find-file))))
 
 (require 'evil-leader)
+
 
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
@@ -94,22 +85,28 @@
   "h"     'evil-window-split
   "k"     'kill-buffer
   "<RET>" 'nohl
-  "<SPC>" 'best-choice-find-file)
+  "<SPC>" 'projectile-find-file)
 (evil-mode 1)
 
 (add-hook 'after-init-hook
           '(lambda ()
              (menu-bar-mode -1)))
 
+(require 'rd-movements)
+
 (require 'ag)
 
 (global-set-key (kbd "C-w") 'evil-window-map)
 (define-key evil-motion-state-map (kbd "C-e") 'move-end-of-line)
 
-(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(global-set-key (kbd "C-h") 'evil-window-left)
+(global-set-key (kbd "C-j") 'evil-window-down)
+(global-set-key (kbd "C-k") 'evil-window-up)
+(global-set-key (kbd "C-l") 'evil-window-right)
+(global-set-key (kbd "C-w C-h") 'evil-window-left)
+(global-set-key (kbd "C-w C-j") 'evil-window-down)
+(global-set-key (kbd "C-w C-k") 'evil-window-up)
+(global-set-key (kbd "C-w C-l") 'evil-window-right)
 (define-key evil-normal-state-map (kbd "C-o C-l") 'paredit-forward-slurp-sexp)
 (define-key evil-normal-state-map (kbd "C-o C-h") 'paredit-forward-barf-sexp)
 (define-key evil-normal-state-map (kbd "C-o C-j") 'paredit-backward-slurp-sexp)
@@ -128,19 +125,18 @@
 
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
-             (auto-complete-mode)
              (paredit-mode)
+             (auto-complete-mode)
              (modify-syntax-entry ?- "w")))
 
 (add-hook 'clojure-mode-hook
           '(lambda ()
-
-             (auto-complete-mode)
+             (paredit-mode)
              (put-clojure-indent ':import :defn)
              (put-clojure-indent ':require-macros :defn)
              (put-clojure-indent ':require :defn)
              (put-clojure-indent 'defrecord :defn)
-             (paredit-mode)
+             (auto-complete-mode)
              (modify-syntax-entry ?- "w")))
 
 (defun cask-install ()
@@ -148,7 +144,9 @@
   (shell-command "cd ~/.emacs.d && cask install"))
 
 (eval-after-load 'evil-ex
-  '(evil-ex-define-cmd "W" 'save-buffer))
+  '(progn
+     (evil-ex-define-cmd "W" 'save-buffer)
+     ))
 
 (eval-after-load 'evil-ex
   '(evil-ex-define-cmd "Wq" '(lambda ()
@@ -168,3 +166,7 @@
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 (show-paren-mode 1)
+
+(if (< (length command-line-args) 2)
+    (progn (cd "~/Code")
+           (setq initial-buffer-choice "~/Code")))
