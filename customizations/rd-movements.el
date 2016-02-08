@@ -32,6 +32,10 @@
 
 (define-key evil-motion-state-map (kbd "C-e") 'move-end-of-line)
 
+;; unmap some clashing keybindings in dired mode
+(define-key dired-mode-map (kbd "g") nil)
+(define-key dired-mode-map (kbd "G") nil)
+
 (global-set-key (kbd "C-6") 'previous-buffer)
 
 (provide 'rd-movements)

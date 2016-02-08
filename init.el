@@ -8,9 +8,15 @@
 (setq dotfiles-dir "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/customizations/")
 
-(setq dired-details-initially-hide t)
-
+(require 'dired-x)
 (require 'dired-details+)
+(add-hook 'dired-load-hook
+          '(lambda ()
+             (require 'dired-x)
+             (dired-omit-mode t)))                 ; Load Dired X when Dired is loaded.
+(setq dired-details-initially-hide t
+      dired-omit-mode t
+      dired-omit-files "^\\.?#\\|^.*\\.swp$\\|^\\..*$")
 
 (load-theme 'ujelly t)
 
@@ -63,6 +69,7 @@
 
 (projectile-global-mode)
 (setq projectile-switch-project-action '(lambda () (dired projectile-project-root)))
+(setq projectile-ignored-projects '("~/Code/dotfiles"))
 
 (set-default 'truncate-lines t)
 
@@ -84,11 +91,6 @@
   )
 (evil-mode 1)
 
-(add-hook 'after-init-hook
-          '(lambda ()
-             (menu-bar-mode -1)))
-
-
 (require 'ag)
 
 
@@ -96,7 +98,6 @@
 (define-key evil-normal-state-map (kbd "C-o C-h") 'paredit-forward-barf-sexp)
 (define-key evil-normal-state-map (kbd "C-o C-j") 'paredit-backward-slurp-sexp)
 (define-key evil-normal-state-map (kbd "C-o C-k") 'paredit-backward-barf-sexp)
-
 
 (evil-global-set-key 'normal (kbd ",,") 'projectile-toggle-between-implementation-and-test)
 (evil-global-set-key 'normal (kbd ",\\") 'projectile-switch-project)
@@ -120,6 +121,8 @@
              (put-clojure-indent ':require-macros :defn)
              (put-clojure-indent ':require :defn)
              (put-clojure-indent 'defrecord :defn)
+             (evil-define-key 'normal evil-normal-state-map (kbd ",t") 'cider-test-run-ns-tests)
+             (evil-define-key 'normal evil-normal-state-map (kbd ",T") 'cider-test-run-test)
              (auto-complete-mode)
              (modify-syntax-entry ?- "w")))
 
@@ -130,16 +133,12 @@
 (eval-after-load 'evil-ex
   '(progn
      (evil-ex-define-cmd "W" 'save-buffer)
-     ))
-
-(eval-after-load 'evil-ex
-  '(evil-ex-define-cmd "Wq" '(lambda ()
+     (evil-ex-define-cmd "Wq" '(lambda ()
                                (save-buffer)
-                               (save-buffers-kill-terminal))))
-(eval-after-load 'evil-ex
-  '(evil-ex-define-cmd "Wqa" '(lambda ()
+                               (save-buffers-kill-terminal)))
+     (evil-ex-define-cmd "Wqa" '(lambda ()
                                 (save-some-buffers 'no-confirm)
-                                (save-buffers-kill-terminal))))
+                                (save-buffers-kill-terminal)))))
 
 (define-key evil-normal-state-map (kbd "gcc") 'evilnc-comment-or-uncomment-lines)
 (define-key evil-normal-state-map (kbd "gcr") 'comment-or-uncomment-region)
