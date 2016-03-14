@@ -30,6 +30,10 @@
 (global-set-key (kbd "C-w C-k") 'evil-window-up)
 (global-set-key (kbd "C-w C-l") 'evil-window-right)
 
+(defun rd-move-end-of-line ()
+  (move-end-of-line)
+  (forward-char))
+
 (define-key evil-motion-state-map (kbd "C-e") 'move-end-of-line)
 
 ;; unmap some clashing keybindings in dired mode

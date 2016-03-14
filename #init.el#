@@ -11,7 +11,7 @@
 (require 'dired-x)
 (require 'dired-details+)
 (setq-default dired-omit-files-p t) ; Buffer-local variable
-(setq dired-omit-files "^\\.?#\\|^.*\\.swp$\\|^\\.[^\\.].*$")
+(setq dired-omit-files ("^\\.?#\\|^.*\\.swp$\\|^\\..*$"))
 
 (load-theme 'ujelly t)
 
@@ -22,12 +22,6 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 (ansi-color-for-comint-mode-on)
-
-(global-linum-mode t)
-(setq linum-format "%3d ")
-(setq x-select-enable-clipboard t)
-
-(require 'smooth-scrolling)
 
 (setq visible-bell t
       vc-follow-symlinks nil
@@ -40,7 +34,7 @@
       shift-select-mode nil
       mouse-yank-at-point t
       require-final-newline t
-      ;; truncate-partial-width-windows nil
+      truncate-partial-width-windows nil
       uniquify-buffer-name-style 'forward
       ffap-machine-p-known 'reject
       whitespace-style '(trailing lines space-before-tab
@@ -69,10 +63,10 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (projectile-global-mode)
-(setq projectile-switch-project-action '(lambda () (dired projectile-project-root)))
+(setq projectile-switch-project-action '(lambda () (dired PROJECTILE-project-root)))
 (setq projectile-ignored-projects '("~/Code/dotfiles"))
 
-;; (set-default 'truncate-lines t)
+(set-default 'truncate-lines t)
 
 (require 'evil)
 
@@ -174,6 +168,3 @@
 
 (require 'rainbow-delimiters)
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-
-(require 'dockerfile-mode)
-(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
