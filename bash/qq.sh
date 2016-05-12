@@ -10,4 +10,4 @@ _qq() {
     COMPREPLY=($(compgen -W "${projects}" -- ${cur}))
 }
 
-complete -F _qq qq
+complete -o bashdefault -o default -o nospace -F _qq qq
