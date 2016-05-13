@@ -4,10 +4,8 @@ function qq {
 }
 
 _qq() {
-    local cur opts
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    projects=$(cd ~/Code ; ls -d */. | sed 's/\/\.//g')
-    COMPREPLY=($(compgen -W "${projects}" -- ${cur}))
+    local token="${COMP_WORDS[COMP_CWORD]}";
+    COMPREPLY=($(ls -1 ~/Code | gawk -v IGNORECASE=1 -v p="${token}" 'p==substr($0,0,length(p))'));
 }
 
 complete -o bashdefault -o default -o nospace -F _qq qq
