@@ -64,3 +64,6 @@
 [submodule "vim/bundle/vim-clojure-static"]
 	path = vim/bundle/vim-clojure-static
 	url = git@github.com:guns/vim-clojure-static.git
+[submodule "vim/bundle/elm.vim"]
+	path = vim/bundle/elm.vim
+	url = git@github.com:lambdatoast/elm.vim.git
