@@ -58,8 +58,8 @@
       ido-use-filename-at-point 'guess
       ido-max-prospects 10)
 
-;; (setq ido-everywhere t)
-;; (ido-vertical-mode)
+(setq ido-everywhere t)
+(ido-vertical-mode)
 
 (set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)
@@ -78,8 +78,6 @@
 
 (setq evil-shift-width 2)
 (setq evil-move-beyond-eol t)
-
-
 
 (require 'evil-leader)
 

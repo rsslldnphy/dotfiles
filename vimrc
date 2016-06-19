@@ -25,6 +25,7 @@ set hidden
 set history=200
 set hlsearch
 set ignorecase
+set smartcase
 set incsearch                          " Incremental search
 set laststatus=2                       " Always show status line
 set lazyredraw
@@ -162,7 +163,7 @@ nmap ,, :A<CR>
 let g:projectionist_autocreate_alternative_file = 1
 
 "" Fireplace
-map <C-c><C-k> :%Eval<CR>
+map <C-c><C-k> :Require<CR>
 
 " function! DockerNREPL(port)
 "   if filereadable(@%) && (! exists("g:autoconnected_docker_nrepl") || &cp)
