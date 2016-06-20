@@ -18,6 +18,7 @@ echo;
 
 echo "*********** Linking dotfiles ************"
 EMACSFILES=(init.el Cask customizations);
+mkdir -p $HOME/.emacs.d
 for f in "${EMACSFILES[@]}"; do
   source="$DOTFILES_DIR/$f";
   dest="$HOME/.emacs.d/$f";
