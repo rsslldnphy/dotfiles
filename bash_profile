@@ -5,7 +5,8 @@ source ~/.bash/git-completion.sh
 source ~/.bash/qq.sh
 
 export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=${JAVA_HOME}/bin:$HOME/.bin:/usr/local/bin:$PATH:/usr/texbin
+export PATH=/usr/local/bin:/usr/local/sbin:${JAVA_HOME}/bin:$HOME/.bin:/usr/local/bin:$PATH:/usr/texbin
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Using Docker quickstart terminal now
 eval $(docker-machine env default 2> /dev/null)

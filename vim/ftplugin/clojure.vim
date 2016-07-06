@@ -79,6 +79,8 @@ function! RunTests()
     endfor
     :Require
     :Eval (cljs.test/run-tests)
+  elseif search("midje.sweet")
+    :%Eval
   endif
 endfunction
 
