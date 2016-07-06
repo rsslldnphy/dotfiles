@@ -10,13 +10,15 @@ Green="\[\033[0;32m\]"
 Reset="\[\033[0;00m\]"
 
 function current_repo {
-  if [ -d .git ]; then
+  top_level=`git rev-parse --is-inside-work-tree 2> /dev/null`
+  if [ $top_level ]; then    
     echo "[`pwd | xargs basename`]"
   fi;
 }
 
 function current_branch {
-  if [ -d .git ]; then
+  top_level=`git rev-parse --is-inside-work-tree 2> /dev/null`
+  if [ $top_level ]; then    
     local branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
     if [ "$branch" != '' ]; then
       echo " $branch"
@@ -27,7 +29,8 @@ function current_branch {
 }
 
 function current_directory {
-  if [ ! -d .git ]; then
+  top_level=`git rev-parse --is-inside-work-tree 2> /dev/null`
+  if [ ! $top_level ]; then    
     pwd | sed "s,^`echo $HOME`,~,"
   fi;
 }
