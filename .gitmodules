@@ -70,3 +70,12 @@
 [submodule "vim/bundle/vim-hcl"]
 	path = vim/bundle/vim-hcl
 	url = git@github.com:b4b4r07/vim-hcl.git
+[submodule "vim/bundle/vim-nginx"]
+	path = vim/bundle/vim-nginx
+	url = git@github.com:fatih/vim-nginx.git
+[submodule "vim/bundle/sql-utilities"]
+	path = vim/bundle/sql-utilities
+	url = git@github.com:vim-scripts/SQLUtilities.git
+[submodule "vim/bundle/align"]
+	path = vim/bundle/align
+	url = git@github.com:vim-scripts/Align.git

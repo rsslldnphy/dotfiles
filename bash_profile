@@ -2,6 +2,7 @@ source ~/.aliases
 source ~/.env
 source ~/.prompt
 source ~/.bash/git-completion.sh
+source ~/.bash/ssh-completion.sh
 source ~/.bash/qq.sh
 
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -16,3 +17,4 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 export PYENV_ROOT=/usr/local/var/pyenv
 
+export GOPATH=~/.go

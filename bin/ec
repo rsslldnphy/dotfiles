@@ -1,7 +1,0 @@
-#!/bin/bash -e
-
-if [[ "$#" -lt 1 ]] ; then
-    emacsclient -t .
-else
-    emacsclient -t . $1
-fi

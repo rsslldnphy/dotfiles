@@ -35,6 +35,7 @@
   c  = commit -v
   ci = commit -m
   aa = add -A
+  psuh = push
   pretty = log --oneline --graph --decorate --all
 [push]
   default = upstream

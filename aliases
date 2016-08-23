@@ -14,3 +14,5 @@ alias bi='bundle install'
 alias bu='bundle update'
 alias be='bundle exec'
 alias gitcleanup='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
+alias gti=git
+alias gpo='git push origin -u $(git rev-parse --abbrev-ref HEAD)'
