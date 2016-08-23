@@ -5,7 +5,8 @@ call plug#begin('~/.vim-plug')
 Plug 'fatih/vim-nginx',         { 'for': 'nginx'   }
 
 Plug 'guns/vim-sexp'
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
 
 Plug 'jordwalke/flatlandia'
 Plug 'junegunn/vim-easy-align'
@@ -23,71 +24,83 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 call plug#end()
+      
+"""" GENERAL SETTINGS
+"""" 
+"""" I was going to comment these, but then I realised a better option was
+"""" to remind you that you can see detailed help for each option by running
+""""
+"""" :help 'option'
+""""
 
-
-set autoindent
-set autoread
-set backspace=2
-if exists('+breakindent')
-  set breakindent showbreak=\ +
-endif
-set clipboard=unnamed
+"" window appearance & behaviour
 set cmdheight=2
-set complete-=i                        " Searching includes can be slow
 set cursorline
 set colorcolumn=80
-set dictionary+=/usr/share/dict/words
 set display=lastline
-set encoding=utf-8
-set expandtab
-set exrc
-set nowrap
-set shiftwidth=2
-set tabstop=2
-set hidden
-set history=200
-set hlsearch
-set ignorecase
-set smartcase
-set incsearch                          " Incremental search
-set laststatus=2                       " Always show status line
+set laststatus=2
 set lazyredraw
-set linebreak
-set list
-set listchars=tab:>\ ,trail:.,extends:>,precedes:<
-if exists('+macmeta')
-  set macmeta
-endif
-set mouse=nvi
-set mousemodel=popup
-set noswapfile
 set number
-set pastetoggle=<F2>
-set printoptions=paper:letter
-set scrolloff=1
-set secure
-set shiftround
-set showcmd         " Show (partial) command in status line.
-set showmatch       " Show matching brackets.
-set sidescrolloff=5
-set smarttab        " sw at the start of the line, sts everywhere else
+set scrolloff=999
+set sidescrolloff=999
+set showcmd
 set splitright
 set splitbelow
-if $TERM == "xterm-256color"
-  set t_Co=256
-endif
+set t_Co=256
 set visualbell
+
+"" indentation and whitespace
+set autoindent
+set backspace=2
+set encoding=utf-8
+set expandtab
+set nowrap
+set shiftround
+set shiftwidth=2
+set showmatch
+set smarttab        " sw at the start of the line, sts everywhere else
+set tabstop=2
 set virtualedit=block
+
+"" files & buffers
+set autoread
+set hidden
+set noswapfile
+
+"" search
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+
+"" completion
+set complete-=i
+set dictionary+=/usr/share/dict/words
 set wildmenu
 set wildmode=longest:full,full
 
+"" mouse, modifier keys, and clipboard
+set mouse=a
+set mousemodel=popup
+set pastetoggle=<F2>
+
+"" miscellaneous
+set clipboard=unnamed
+set history=200
+if exists('macmeta')
+  set macmeta
+endif
+set secure
+
 filetype plugin indent on
 syntax enable
-colorscheme flatlandia
+colorscheme torte
 highlight LineNr ctermfg=grey
 
-"" MAPPINGS
 
+"""" MAPPINGS
+
+"" leader
 let mapleader      = ","
 let maplocalleader = ","
 let g:mapleader    = ","
@@ -103,15 +116,18 @@ inoremap <Down>   <nop>
 inoremap <Left>   <nop>
 inoremap <Right>  <nop>
 
-"" Movement in command mode
+"" Emacs (sorry) movement in command mode
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
-cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
-cnoremap <C-b> <S-Left>
-cnoremap <C-w> <S-Right>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+
+execute "set <M-b>=\eb"
+execute "set <M-f>=\ef"
+cnoremap <M-f> <S-Right>
+cnoremap <M-b> <S-Left>
 
 "" Splits
 nmap <leader>v    :vs<CR>
