@@ -1,27 +1,28 @@
 set nocompatible
 
+"""" PLUGINS
+
 call plug#begin('~/.vim-plug')
 
-Plug 'fatih/vim-nginx',         { 'for': 'nginx'   }
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
 
-Plug 'guns/vim-sexp'
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/vim-clojure-static'
+Plug 'fatih/vim-nginx',                            { 'for': 'nginx'   }
 
-Plug 'jordwalke/flatlandia'
+Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
+Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
+Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
-
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fireplace',     { 'for': 'clojure' }
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 call plug#end()
       
@@ -124,8 +125,8 @@ cnoremap <C-n> <Down>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
-execute "set <M-b>=\eb"
-execute "set <M-f>=\ef"
+execute "set <M-b>=∫"
+execute "set <M-f>=ƒ"
 cnoremap <M-f> <S-Right>
 cnoremap <M-b> <S-Left>
 
@@ -150,7 +151,7 @@ command! Wqa :wqa
 command! E   :e
 
 "" Tab-complete
-imap <tab>   <C-n>
+imap <tab>   <C-n> 
 imap <S-tab> <C-p>
 
 """" PLUGIN SETTINGS
@@ -178,5 +179,7 @@ let g:ctrlp_reuse_window = 'nerdtree'
 let g:ctrlp_working_path_mode = 0
 nmap <leader><space> :CtrlP<CR>
 
-"" Projectionist - see ftplugin files for g:projectionist_heuristics
-nmap ,, :A<CR>
+"" Projectionist
+"" see dotfiles/projections for example .projections.json files to add to
+"" your project root
+nmap <leader><leader> :A<CR>

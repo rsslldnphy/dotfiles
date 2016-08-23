@@ -1,0 +1,16 @@
+{
+  "*.c": {
+    "*.c": {
+      "type": "source",
+      "template": [
+        "#include <stdio.h>",
+        "",
+        "int main ()",
+        "{",
+        "  return 0;",
+        "}",
+        ""
+      ]
+    }
+  }
+}
