@@ -125,10 +125,17 @@ cnoremap <C-n> <Down>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
-execute "set <M-b>=∫"
-execute "set <M-f>=ƒ"
+" This was a real pain to get working.
+" Don't really understand what the `set` commands are doing
+" but it seems to work for allowing word-wise movement in command mode.
+" The insert-mode mappings are just there because if they're not,
+" Escape followed by a 'b' is interpreted as <M-b>.
+execute "set <M-b>=\eb"
+execute "set <M-f>=\ef"
 cnoremap <M-f> <S-Right>
 cnoremap <M-b> <S-Left>
+inoremap <M-f> <esc>f
+inoremap <M-b> <esc>b
 
 "" Splits
 nmap <leader>v :vs<CR>
@@ -182,4 +189,4 @@ nmap <leader><space> :CtrlP<CR>
 "" Projectionist
 "" see dotfiles/projections for example .projections.json files to add to
 "" your project root
-nmap <leader><leader> :A<CR>
+nmap <leader><leader> :A<CR>      
