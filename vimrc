@@ -55,6 +55,8 @@ set autoindent
 set backspace=2
 set encoding=utf-8
 set expandtab
+set list
+set listchars=tab:>\ ,trail:.,extends:>,precedes:<
 set nowrap
 set shiftround
 set shiftwidth=2
