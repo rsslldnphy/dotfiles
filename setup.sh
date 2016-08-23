@@ -1,11 +1,22 @@
 #!/bin/bash -e
 
-brew install fish 2> /dev/null
+echo "*** Installing some essentials from Homebrew"
+brew install cowsay elasticsearch fish git hub jq   2> /dev/null
+brew install leiningen nginx rbenv sl tmux tree     2> /dev/null
+brew install macvim    --with-override-system-vim   2> /dev/null
+brew install coreutils --with-default-names         2> /dev/null
 
-ln -sf $(pwd)/vim              ~/.vim
-ln -sf $(pwd)/vimrc            ~/.vimrc
-ln -sf $(pwd)/gitconfig        ~/.gitconfig
-ln -sf $(pwd)/fish/functions   ~/.config/fish/functions
-ln -sf $(pwd)/fish/completions ~/.config/fish/completions
 
-curl -fLo vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo "*** Installing essential gems"
+sudo gem install lolcat
+
+echo "*** Creating symbolic links"
+
+for f in vim vimrc gitconfig config/fish/functions config/fish/completions; do
+  source="$(pwd)/$f"
+  dest="$HOME/.$f"
+  echo "Linking $source to $dest"
+  [ -L $dest ] || ln -s $source $dest
+done
+
+echo "Done"
