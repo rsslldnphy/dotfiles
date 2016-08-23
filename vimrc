@@ -42,7 +42,7 @@ set laststatus=2
 set lazyredraw
 set number
 set scrolloff=999
-set sidescrolloff=999
+set sidescrolloff=10
 set showcmd
 set splitright
 set splitbelow
@@ -92,15 +92,15 @@ if exists('macmeta')
 endif
 set secure
 
+"" colorschemes and syntax highlighting
 filetype plugin indent on
 syntax enable
 colorscheme torte
 highlight LineNr ctermfg=grey
 
-
 """" MAPPINGS
 
-"" leader
+"" Jeremy - I mean comma! - for leader
 let mapleader      = ","
 let maplocalleader = ","
 let g:mapleader    = ","
@@ -130,19 +130,19 @@ cnoremap <M-f> <S-Right>
 cnoremap <M-b> <S-Left>
 
 "" Splits
-nmap <leader>v    :vs<CR>
-nmap <leader>h    :sp<CR>
+nmap <leader>v :vs<CR>
+nmap <leader>h :sp<CR>
 
 "" Clear search highlight
 nmap <leader><CR> :nohl<CR>
 
 "" Movement between windows
-nmap <C-h>        <C-w>h
-nmap <C-j>        <C-w>j
-nmap <C-k>        <C-w>k
-nmap <C-l>        <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 
-"" Handle common typos
+"" Handle common tpyos
 command! W   :w
 command! Wa  :wa
 command! Wq  :wq
@@ -153,66 +153,30 @@ command! E   :e
 imap <tab>   <C-n>
 imap <S-tab> <C-p>
 
-"" PLUGIN SETTINGS
+"""" PLUGIN SETTINGS
 
 "" NERD Tree
-let g:NERDTreeWinPos="left"
-let NERDTreeHighlightCursorline=1
 let NERDTreeMinimalUI=1
-let NERDTreeDirArrows=1
 
 "" Rainbow Parens
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-let g:rbpt_colorpairs = [
-      \ ['brown',       'RoyalBlue3'],
-      \ ['Darkblue',    'SeaGreen3'],
-      \ ['darkgray',    'DarkOrchid3'],
-      \ ['darkgreen',   'firebrick3'],
-      \ ['darkcyan',    'RoyalBlue3'],
-      \ ['darkred',     'SeaGreen3'],
-      \ ['darkmagenta', 'DarkOrchid3'],
-      \ ['brown',       'firebrick3'],
-      \ ['gray',        'RoyalBlue3'],
-      \ ['darkmagenta', 'DarkOrchid3'],
-      \ ['Darkblue',    'firebrick3'],
-      \ ['darkgreen',   'RoyalBlue3'],
-      \ ['darkcyan',    'SeaGreen3'],
-      \ ['darkred',     'DarkOrchid3'],
-      \ ['red',         'firebrick3'],
-      \ ]
-let g:rbpt_max = 15
 
-"" Ack
-let g:ackprg = 'ag --nogroup --nocolor --column'
-map <C-f> :Ack<space>""<C-h>
-map <leader>f :Ack<space>""<C-h>
+au BufReadPost quickfix setlocal colorcolumn=0
+
+"" Ack/Ag
+let g:ackprg = 'ag --nogroup --column'
+map <C-f> :Ack<space>""<C-b>
+map <leader>f :Ack<space>""<C-b>
 
 "" CtrlP
-let g:ctrlp_user_command = 'ag %s -l --nogroup --nocolor --column -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nogroup --column --hidden -g ""'
 let g:ctrlp_use_caching = 0
-let g:ctrlp_dont_split = 'nerdtree'
+let g:ctrlp_reuse_window = 'nerdtree'
 let g:ctrlp_working_path_mode = 0
 nmap <leader><space> :CtrlP<CR>
 
 "" Projectionist - see ftplugin files for g:projectionist_heuristics
 nmap ,, :A<CR>
-let g:projectionist_autocreate_alternative_file = 1
-
-"" Fireplace
-map <C-c><C-k> :Require<CR>
-
-"" Fussbudget
-function! CleanupWhitespace()
-  try
-    exec ':%s/\s\+$//g'
-  catch "E486: Pattern not found: \s\+$"
-  endtry
-endfunction
-
-autocmd BufReadPost *.edn set filetype=clojure
-
-map <leader>c :call CleanupWhitespace<CR>
-autocmd Filetype clojure map <leader>c :call CleanupWhitespace()<CR>

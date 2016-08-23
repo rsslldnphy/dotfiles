@@ -1,64 +1,64 @@
 "" Projectionist
-let g:projectionist_heuristics = {
-      \  '*.clj': {
-      \    'src/clj/*.clj': {
-      \       'alternate': 'test/clj/{}_test.clj',
-      \       'type': 'source',
-      \       'template': ['(ns {dot|hyphenate})',
-      \                    '']
-      \     },
-      \    'test/clj/*_test.clj': {
-      \       'alternate': 'src/clj/{}.clj',
-      \       'type': 'test',
-      \       'template': ['(ns {dot|hyphenate}-test',
-      \                    '  (:require [{dot|hyphenate} :as {basename|hyphenate}]',
-      \                    '            [clojure.test :refer [deftest testing is run-tests]]))',
-      \                    '']
-      \     },
-      \    'src/cljc/*.cljc': {
-      \       'alternate': 'test/cljc/{}_test.cljc',
-      \       'type': 'source',
-      \       'template': ['(ns {dot|hyphenate})',
-      \                    '']
-      \     },
-      \    'test/cljc/*_test.cljc': {
-      \       'alternate': 'src/cljc/{}.cljc',
-      \       'type': 'test',
-      \       'template': ['(ns {dot|hyphenate}-test',
-      \                    '  (:require [{dot|hyphenate} :as {basename|hyphenate}]',
-      \                    '            [clojure.test :refer [deftest testing is run-tests]]))',
-      \                    '']
-      \     },
-      \    'src/cljs/*.cljs': {
-      \       'alternate': 'test/cljs/{}_test.cljs',
-      \       'type': 'source',
-      \       'template': ['(ns {dot|hyphenate})',
-      \                    '']
-      \     },
-      \    'test/cljs/*_test.cljs': {
-      \       'alternate': 'src/cljs/{}.cljs',
-      \       'type': 'test',
-      \       'template': ['(ns {dot|hyphenate}-test',
-      \                    '  (:require [{dot|hyphenate} :as {basename|hyphenate}]',
-      \                    '            [cljs.test :refer-macros [deftest testing is run-tests]]))',
-      \                    '']
-      \     },
-      \    'src/*.clj': {
-      \       'alternate': 'test/{}_test.clj',
-      \       'type': 'source',
-      \       'template': ['(ns {dot|hyphenate})',
-      \                    '']
-      \     },
-      \    'test/*_test.clj': {
-      \       'alternate': 'src/{}.clj',
-      \       'type': 'test',
-      \       'template': ['(ns {dot|hyphenate}-test',
-      \                    '  (:require [{dot|hyphenate} :as {basename|hyphenate}]',
-      \                    '            [clojure.test :refer [deftest testing is run-tests]]))',
-      \                    '']
-      \     },
-      \  },
-      \}
+" let g:projectionist_heuristics = {
+"       \  '*.clj': {
+"       \    'src/clj/*.clj': {
+"       \       'alternate': 'test/clj/{}_test.clj',
+"       \       'type': 'source',
+"       \       'template': ['(ns {dot|hyphenate})',
+"       \                    '']
+"       \     },
+"       \    'test/clj/*_test.clj': {
+"       \       'alternate': 'src/clj/{}.clj',
+"       \       'type': 'test',
+"       \       'template': ['(ns {dot|hyphenate}-test',
+"       \                    '  (:require [{dot|hyphenate} :as {basename|hyphenate}]',
+"       \                    '            [clojure.test :refer [deftest testing is run-tests]]))',
+"       \                    '']
+"       \     },
+"       \    'src/cljc/*.cljc': {
+"       \       'alternate': 'test/cljc/{}_test.cljc',
+"       \       'type': 'source',
+"       \       'template': ['(ns {dot|hyphenate})',
+"       \                    '']
+"       \     },
+"       \    'test/cljc/*_test.cljc': {
+"       \       'alternate': 'src/cljc/{}.cljc',
+"       \       'type': 'test',
+"       \       'template': ['(ns {dot|hyphenate}-test',
+"       \                    '  (:require [{dot|hyphenate} :as {basename|hyphenate}]',
+"       \                    '            [clojure.test :refer [deftest testing is run-tests]]))',
+"       \                    '']
+"       \     },
+"       \    'src/cljs/*.cljs': {
+"       \       'alternate': 'test/cljs/{}_test.cljs',
+"       \       'type': 'source',
+"       \       'template': ['(ns {dot|hyphenate})',
+"       \                    '']
+"       \     },
+"       \    'test/cljs/*_test.cljs': {
+"       \       'alternate': 'src/cljs/{}.cljs',
+"       \       'type': 'test',
+"       \       'template': ['(ns {dot|hyphenate}-test',
+"       \                    '  (:require [{dot|hyphenate} :as {basename|hyphenate}]',
+"       \                    '            [cljs.test :refer-macros [deftest testing is run-tests]]))',
+"       \                    '']
+"       \     },
+"       \    'src/*.clj': {
+"       \       'alternate': 'test/{}_test.clj',
+"       \       'type': 'source',
+"       \       'template': ['(ns {dot|hyphenate})',
+"       \                    '']
+"       \     },
+"       \    'test/*_test.clj': {
+"       \       'alternate': 'src/{}.clj',
+"       \       'type': 'test',
+"       \       'template': ['(ns {dot|hyphenate}-test',
+"       \                    '  (:require [{dot|hyphenate} :as {basename|hyphenate}]',
+"       \                    '            [clojure.test :refer [deftest testing is run-tests]]))',
+"       \                    '']
+"       \     },
+"       \  },
+"       \}
 
 function! RunTests()
   :w
@@ -94,3 +94,7 @@ command! DockerNREPL :call DockerNREPL()
 
 map <buffer> <leader>t :call RunTests()<CR>
 map <buffer> <leader>r :Eval (user/reset)<CR>
+
+
+"" Fireplace
+map <C-c><C-k> :Require<CR>
