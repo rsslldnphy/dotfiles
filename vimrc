@@ -23,6 +23,7 @@ Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
+Plug 'chriskempson/base16-vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim'
@@ -105,7 +106,7 @@ set secure
 "" colorschemes and syntax highlighting
 filetype plugin indent on
 syntax enable
-colorscheme torte
+colorscheme base16-default-dark
 highlight LineNr ctermfg=grey
 
 """" MAPPINGS
