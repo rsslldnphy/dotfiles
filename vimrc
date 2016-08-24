@@ -200,9 +200,12 @@ nmap <leader><leader> :A<CR>
 let g:airline_powerline_fonts = 1
 
 "" EasyAlign
-vmap <Enter> <Plug>(EasyAlign)
+vmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+let g:easy_align_delimiters = {
+      \ '%': { 'pattern': ' ' , 'filter': 'g/^\S' , 'left_margin': 0, 'right_margin': 0, 'stick_to_left': 0}
+      \ }
 
 "" Hide colorcolumn in quickfix mode
 au BufReadPost quickfix setlocal colorcolumn=0
