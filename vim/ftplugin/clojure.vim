@@ -2,7 +2,6 @@
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol'
 let g:clojure_align_multiline_strings = 1
 
-
 function! CljsRequireSource()
   for source_file in projectionist#query_file('alternate')
     let l:source_file = substitute(source_file, projectionist#path() . "/src/cljs/", "", "")
