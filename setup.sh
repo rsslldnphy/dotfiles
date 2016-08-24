@@ -12,7 +12,7 @@ sudo gem install lolcat
 
 echo "*** Creating symbolic links"
 
-for f in vim vimrc gitconfig config/fish/functions config/fish/completions; do
+for f in ackrc vim vimrc gitconfig config/fish/functions config/fish/completions; do
   source="$(pwd)/$f"
   dest="$HOME/.$f"
   echo "Linking $source to $dest"

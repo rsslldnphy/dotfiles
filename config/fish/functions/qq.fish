@@ -1,5 +1,5 @@
 function qq
-	set repo "$HOME/Code/$argv[1]"
+  set repo "$HOME/Code/$argv[1]"
   if test -d $repo
     cd $repo
   else

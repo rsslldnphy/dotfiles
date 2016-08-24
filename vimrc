@@ -1,5 +1,9 @@
 set nocompatible
 
+if &shell =~# 'fish$'
+  set shell=bash
+endif
+
 """" PLUGINS
 
 call plug#begin('~/.vim-plug')
@@ -10,6 +14,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 
+Plug 'dag/vim-fish',                               { 'for': 'fish'    }
 Plug 'fatih/vim-nginx',                            { 'for': 'nginx'   }
 
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
@@ -18,16 +23,18 @@ Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
+Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
-      
+
 """" GENERAL SETTINGS
-"""" 
+""""
 """" I was going to comment these, but then I realised a better option was
 """" to remind you that you can see detailed help for each option by running
 """"
@@ -160,7 +167,7 @@ command! Wqa :wqa
 command! E   :e
 
 "" Tab-complete
-imap <tab>   <C-n> 
+imap <tab> <C-n>
 imap <S-tab> <C-p>
 
 """" PLUGIN SETTINGS
@@ -191,4 +198,7 @@ nmap <leader><space> :CtrlP<CR>
 "" Projectionist
 "" see dotfiles/projections for example .projections.json files to add to
 "" your project root
-nmap <leader><leader> :A<CR>      
+nmap <leader><leader> :A<CR>
+
+"" Airline
+let g:airline_powerline_fonts = 1
