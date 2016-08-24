@@ -26,7 +26,7 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'chriskempson/base16-vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
@@ -177,12 +177,7 @@ imap <S-tab> <C-p>
 let NERDTreeMinimalUI=1
 
 "" Rainbow Parens
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-au BufReadPost quickfix setlocal colorcolumn=0
+let g:rainbow_active = 1
 
 "" Ack/Ag
 let g:ackprg = 'ag --nogroup --column'
@@ -190,7 +185,7 @@ map <C-f> :Ack<space>""<C-b>
 map <leader>f :Ack<space>""<C-b>
 
 "" CtrlP
-let g:ctrlp_user_command = 'ag %s -l --nogroup --column --hidden -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nogroup --column -g ""'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_reuse_window = 'nerdtree'
 let g:ctrlp_working_path_mode = 0
@@ -203,3 +198,11 @@ nmap <leader><leader> :A<CR>
 
 "" Airline
 let g:airline_powerline_fonts = 1
+
+"" EasyAlign
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+
+"" Hide colorcolumn in quickfix mode
+au BufReadPost quickfix setlocal colorcolumn=0
