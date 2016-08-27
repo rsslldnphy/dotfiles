@@ -171,6 +171,9 @@ command! E   :e
 imap <tab> <C-n>
 imap <S-tab> <C-p>
 
+"" Remove trailing whitespace
+nnoremap <silent> <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
 """" PLUGIN SETTINGS
 
 "" NERD Tree
