@@ -51,7 +51,7 @@ set laststatus=2
 set lazyredraw
 set number
 set scrolloff=999
-set sidescrolloff=10
+set sidescrolloff=5
 set showcmd
 set splitright
 set splitbelow
