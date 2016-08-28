@@ -25,9 +25,9 @@ Plug 'tpope/vim-fireplace',                        { 'for': 'clojure' }
 Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
-Plug 'vim-scripts/Align',                          { 'for': 'sql'     }
+Plug 'vim-scripts/Align',                          { 'for': 'sql'     } " required by SQLUtilities
 Plug 'vim-scripts/SQLUtilities',                   { 'for': 'sql'     }
-
+Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql'     }
 
 Plug 'chriskempson/base16-vim'
 Plug 'ervandew/supertab'
@@ -108,6 +108,7 @@ if exists('macmeta')
   set macmeta
 endif
 set secure
+set exrc
 
 "" colorschemes and syntax highlighting
 filetype plugin indent on
@@ -234,4 +235,3 @@ vmap <silent>sf <Plug>SQLUFormatter<CR>
 "" text object for SQL queries
 vnoremap aq :normal! {<cr>/^[^\-]<CR>v/;<CR>:<C-w>nohl<CR>gv
 vnoremap iq :normal! {<cr>/^[^\-]<CR>v/;<CR>:<C-w>nohl<CR>gv
-
