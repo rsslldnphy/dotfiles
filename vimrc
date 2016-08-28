@@ -23,6 +23,10 @@ Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
+Plug 'vim-scripts/Align'
+Plug 'vim-scripts/SQLUtilities',                   { 'for': 'sql'     }
+
+
 Plug 'chriskempson/base16-vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
@@ -212,3 +216,13 @@ let g:easy_align_delimiters = {
 
 "" Hide colorcolumn in quickfix mode
 au BufReadPost quickfix setlocal colorcolumn=0
+
+"" SQL Utilities
+let g:sqlutil_align_comma = 1
+let g:sqlutil_keyword_case = '\U'
+vmap <silent>sf <Plug>SQLUFormatter<CR>
+
+"" text object for SQL queries
+vnoremap aq :normal! {<cr>/^[^\-]<CR>v/;<CR>:<C-w>nohl<CR>gv
+vnoremap iq :normal! {<cr>/^[^\-]<CR>v/;<CR>:<C-w>nohl<CR>gv
+
