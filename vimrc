@@ -13,6 +13,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 
 Plug 'dag/vim-fish',                               { 'for': 'fish'    }
 Plug 'fatih/vim-nginx',                            { 'for': 'nginx'   }
@@ -119,6 +121,12 @@ highlight LineNr ctermfg=grey
 let mapleader      = ","
 let maplocalleader = ","
 let g:mapleader    = ","
+
+"" disable ex mode until I learn if it's actually still useful
+nnoremap Q <nop>
+
+"" add %% expansion for current directory
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 "" Remove temptation of arrow keys
 noremap <Up>      <nop>
