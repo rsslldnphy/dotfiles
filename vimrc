@@ -121,6 +121,7 @@ highlight LineNr ctermfg=grey
 let mapleader      = ","
 let maplocalleader = ","
 let g:mapleader    = ","
+nnoremap \ ,
 
 "" disable ex mode until I learn if it's actually still useful
 nnoremap Q <nop>
