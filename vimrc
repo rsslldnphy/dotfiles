@@ -1,4 +1,6 @@
 set nocompatible
+filetype plugin on
+runtime macros/matchit.vim
 
 if &shell =~# 'fish$'
   set shell=bash
