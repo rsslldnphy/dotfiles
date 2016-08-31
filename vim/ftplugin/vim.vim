@@ -1,1 +1,1 @@
-nmap <buffer> <leader>r :source %<CR>
+nmap <buffer> <leader>r :source %<CR>:nohl<CR>

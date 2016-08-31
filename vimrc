@@ -18,6 +18,16 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 
+Plug 'qpkorr/vim-renamer'
+Plug 'chriskempson/base16-vim'
+Plug 'ervandew/supertab'
+Plug 'junegunn/vim-easy-align'
+Plug 'luochen1990/rainbow'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+
 Plug 'dag/vim-fish',                               { 'for': 'fish'    }
 Plug 'fatih/vim-nginx',                            { 'for': 'nginx'   }
 
@@ -30,15 +40,6 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'vim-scripts/Align',                          { 'for': 'sql'     } " required by SQLUtilities
 Plug 'vim-scripts/SQLUtilities',                   { 'for': 'sql'     }
 Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql'     }
-
-Plug 'chriskempson/base16-vim'
-Plug 'ervandew/supertab'
-Plug 'junegunn/vim-easy-align'
-Plug 'luochen1990/rainbow'
-Plug 'kien/ctrlp.vim'
-Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -171,10 +172,10 @@ nmap <leader>h :sp<CR>
 nmap <leader><CR> :nohl<CR>
 
 "" Movement between windows
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 "" Handle common tpyos
 command! W   :w
@@ -193,7 +194,11 @@ nnoremap <silent> <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl
 """" PLUGIN SETTINGS
 
 "" NERD Tree
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI = 1
+
+" disable some mappings so my split-movement shortcuts still work
+let g:NERDTreeMapJumpNextSibling = 0
+let g:NERDTreeMapJumpPrevSibling = 0
 
 "" Rainbow Parens
 let g:rainbow_active = 1
@@ -204,11 +209,12 @@ map <C-f> :Ack<space>""<C-b>
 map <leader>f :Ack<space>""<C-b>
 
 "" CtrlP
+let g:ctrlp_map = '<leader><space>'
 let g:ctrlp_user_command = 'ag %s -l --nogroup --column -g ""'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_reuse_window = 'nerdtree'
 let g:ctrlp_working_path_mode = 0
-nmap <leader><space> :CtrlP<CR>
+nmap <leader>b :CtrlPBuffer<CR>
 
 "" Projectionist
 "" see dotfiles/projections for example .projections.json files to add to
