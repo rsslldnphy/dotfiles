@@ -20,4 +20,3 @@ for f in ackrc gitconfig config/fish/config.fish config/fish/functions config/fi
 done
 
 echo "Done"
-
