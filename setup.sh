@@ -2,8 +2,8 @@
 
 echo "*** Installing some essentials from Homebrew"
 brew install cowsay elasticsearch figlet fish git
-brew install hub jq leiningen nginx rbenv sl tmux
-brew install tree reattach-to-user-namespace
+brew install hub jq leiningen nginx rbenv rlwrap
+brew install sl tmux tree reattach-to-user-namespace
 brew install macvim    --with-override-system-vim
 brew install coreutils --with-default-names
 
