@@ -18,10 +18,12 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 
+Plug 'airblade/vim-gitgutter'
 Plug 'qpkorr/vim-renamer'
 Plug 'chriskempson/base16-vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-emoji'
 Plug 'luochen1990/rainbow'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
@@ -243,3 +245,11 @@ vmap <silent>sf <Plug>SQLUFormatter<CR>
 "" text object for SQL queries
 vnoremap aq :normal! {<cr>/^[^\-]<CR>v/;<CR>:<C-w>nohl<CR>gv
 vnoremap iq :normal! {<cr>/^[^\-]<CR>v/;<CR>:<C-w>nohl<CR>gv
+
+"" git-gutter
+
+let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+let g:gitgutter_sign_modified_removed = emoji#for('collision')
+set completefunc=emoji#complete
