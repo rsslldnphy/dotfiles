@@ -33,3 +33,4 @@ command! DisableFacts :%s/(fact /#_(fact /g | nohl
 command! EnableFacts  :%s/#_(fact /(fact /g | nohl
 
 command! -nargs=1 LogLevel :execute "Eval (taoensso.timbre/set-level! :" . <f-args> . ")"
+command! -nargs=1 NsPublics execute Eval string((doseq [[sym var] (sort-by first (ns-publics '<args>))] (println sym)))
