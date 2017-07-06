@@ -27,21 +27,23 @@ Plug 'junegunn/vim-emoji'
 Plug 'luochen1990/rainbow'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+Plug 'reedes/vim-pencil'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 
-Plug 'dag/vim-fish',                               { 'for': 'fish'    }
-Plug 'fatih/vim-nginx',                            { 'for': 'nginx'   }
+Plug 'hashivim/vim-terraform',                     { 'for': 'terraform' }
+Plug 'dag/vim-fish',                               { 'for': 'fish'      }
+Plug 'fatih/vim-nginx',                            { 'for': 'nginx'     }
 
-Plug 'guns/vim-clojure-static',                    { 'for': 'clojure' }
-Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure' }
+Plug 'guns/vim-clojure-static',                    { 'for': 'clojure'   }
+Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure'   }
 Plug 'tpope/vim-fireplace'
-Plug 'guns/vim-sexp',                              { 'for': 'clojure' }
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'guns/vim-sexp',                              { 'for': 'clojure'   }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure'   }
 
-Plug 'vim-scripts/Align',                          { 'for': 'sql'     } " required by SQLUtilities
-Plug 'vim-scripts/SQLUtilities',                   { 'for': 'sql'     }
-Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql'     }
+Plug 'vim-scripts/Align',                          { 'for': 'sql'       } " required by SQLUtilities
+Plug 'vim-scripts/SQLUtilities',                   { 'for': 'sql'       }
+Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql'       }
 
 call plug#end()
 
@@ -197,6 +199,7 @@ nnoremap <silent> <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl
 
 "" NERD Tree
 let NERDTreeMinimalUI = 1
+let NERDTreeIgnore = ['\.pyc$']
 
 " disable some mappings so my split-movement shortcuts still work
 let g:NERDTreeMapJumpNextSibling = 0
