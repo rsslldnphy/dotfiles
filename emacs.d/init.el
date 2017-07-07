@@ -3,16 +3,16 @@
 (setq inhibit-startup-message t
       vc-follow-symlinks      t
       shell-file-name         "/bin/bash"
-			font-use-system-font    t
+      font-use-system-font    t
       truncate-lines          t
-			linum-format            "%4d \u2502 "
+      linum-format            "%4d \u2502 "
 
-			backup-directory-alist  '(("." . "~/.backups"))
-			backup-by-copying       t
-			delete-old-versions     t
-			kept-new-versions       6
-			kept-old-versions       2
-			version-control         t
+      backup-directory-alist  '(("." . "~/.backups"))
+      backup-by-copying       t
+      delete-old-versions     t
+      kept-new-versions       6
+      kept-old-versions       2
+      version-control         t
 
       dotfiles-dir
       (file-name-directory (or (buffer-file-name)

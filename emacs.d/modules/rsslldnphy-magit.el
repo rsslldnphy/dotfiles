@@ -1,5 +1,5 @@
 (use-package magit
-	:ensure t)
+  :ensure t)
 
 (use-package evil-magit
   :ensure t)
