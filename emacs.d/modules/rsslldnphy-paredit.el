@@ -1,6 +1,3 @@
-(let ((byte-compile-not-obsolete-funcs (append byte-compile-not-obsolete-funcs '(preceding-sexp))))
-  (use-package eval-sexp-fu :ensure t))
-
 (use-package paredit
 	:ensure t
 	:init
