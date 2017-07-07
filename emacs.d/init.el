@@ -12,15 +12,28 @@
       (file-name-directory (or (buffer-file-name) (file-chase-links load-file-name))))
 
 (setq package-archives
-      '(("melpa" . "https://melpa.org/packages/")
+       '(("melpa" . "https://melpa.org/packages/")
 	("org"   . "https://orgmode.org/elpa/")
 	("gnu"   . "https://elpa.gnu.org/packages/")))
 
-(require 'package)
+(require 'cl)
+(defun online? ()
+  (if (and (functionp 'network-interface-list)
+           (network-interface-list))
+      (some (lambda (iface) (unless (equal "lo" (car iface))
+                         (member 'up (first (last (network-interface-info
+                                                   (car iface)))))))
+            (network-interface-list))
+    t))
+
 (package-initialize)
+
+(when (online?)
+  (unless package-archive-contents (package-refresh-contents)))
 
 (when (not (package-installed-p 'paradox))
   (package-install 'paradox))
+
 
 (paradox-require 'evil)
 (paradox-require 'evil-leader)
@@ -39,6 +52,10 @@
 (paradox-require 'clj-refactor)
 (paradox-require 'paredit)
 (paradox-require 'rainbow-delimiters)
+
+(let ((byte-compile-not-obsolete-funcs (append byte-compile-not-obsolete-funcs '(preceding-sexp))))
+    (paradox-require 'eval-sexp-fu))
+(paradox-require 'cider-eval-sexp-fu)
 
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 (add-hook 'clojure-mode-hook    #'paredit-mode)
@@ -95,6 +112,8 @@
 
 (load-theme 'wombat)
 
+(projectile-discover-projects-in-directory "~/Code")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -102,7 +121,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (nginx-mode ac-cider auto-complete dockerfile-mode paredit js-mode javascript javascript-mode yaml-mode yaml docker docker-mode magit cider evil-leader helm-ag ag helm-projectile use-package paradox helm evil clojure-mode))))
+    (cider-eval-sexp-fu eval-sexp-fu nginx-mode ac-cider auto-complete dockerfile-mode paredit js-mode javascript javascript-mode yaml-mode yaml docker docker-mode magit cider evil-leader helm-ag ag helm-projectile use-package paradox helm evil clojure-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

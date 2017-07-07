@@ -13,6 +13,7 @@ sudo gem install lolcat
 
 echo "*** Creating symbolic links"
 
+mkdir -p ~/.emacs.d
 for f in ackrc gitconfig config/fish/config.fish config/fish/functions config/fish/completions emacs.d/init.el tmux.conf vim vimrc; do
   source="$(pwd)/$f"
   dest="$HOME/.$f"

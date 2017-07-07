@@ -1,3 +1,3 @@
 function e
-  emacs $argv;
+  vim $argv;
 end
