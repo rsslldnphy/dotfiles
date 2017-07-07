@@ -28,23 +28,18 @@
         ("org"   . "https://orgmode.org/elpa/")
         ("gnu"   . "https://elpa.gnu.org/packages/")))
 
+(setq-default truncate-lines   t
+              indent-tabs-mode nil
+              tab-width        2)
+
 (add-to-list 'load-path (concat dotfiles-dir "modules"))
 (load custom-file 'noerror)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile
-  (require 'use-package))
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
-(set-default 'truncate-lines t)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
 (show-paren-mode 1)
 (menu-bar-mode 0)
 (global-visual-line-mode 1)
@@ -54,6 +49,13 @@
 (set-face-background hl-line-face "#206040")
 (set-face-attribute hl-line-face nil :underline nil)
 (load-theme 'wombat)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
 
 (require 'rsslldnphy-core)
 (require 'rsslldnphy-evil)
