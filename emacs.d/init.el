@@ -6,6 +6,8 @@
 
 (setq inhibit-startup-message t)
 
+(setq vc-follow-symlinks t)
+
 (setq dotfiles-dir
       (file-name-directory (or (buffer-file-name) (file-chase-links load-file-name))))
 
@@ -14,6 +16,7 @@
 	("org"   . "https://orgmode.org/elpa/")
 	("gnu"   . "https://elpa.gnu.org/packages/")))
 
+(require 'package)
 (package-initialize)
 
 (when (not (package-installed-p 'paradox))
@@ -27,9 +30,11 @@
 (paradox-require 'helm-ag)
 (paradox-require 'helm-projectile)
 (paradox-require 'auto-complete)
+(paradox-require 'nginx-mode)
 
 (paradox-require 'clojure-mode)
 (paradox-require 'cider)
+
 (paradox-require 'ac-cider)
 (paradox-require 'clj-refactor)
 (paradox-require 'paredit)
@@ -55,7 +60,8 @@
 (evil-leader/set-key
   "v"     'evil-window-vsplit
   "h"     'evil-window-split
-  "<SPC>" 'helm-projectile-find-file)
+  "<SPC>" 'helm-projectile-find-file
+  "f"     'helm-projectile-ag)
 (evil-mode 1)
 
 (define-key dired-mode-map (kbd "<SPC>") nil)
@@ -96,7 +102,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ac-cider auto-complete dockerfile-mode paredit js-mode javascript javascript-mode yaml-mode yaml docker docker-mode magit cider evil-leader helm-ag ag helm-projectile use-package paradox helm evil clojure-mode))))
+    (nginx-mode ac-cider auto-complete dockerfile-mode paredit js-mode javascript javascript-mode yaml-mode yaml docker docker-mode magit cider evil-leader helm-ag ag helm-projectile use-package paradox helm evil clojure-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
