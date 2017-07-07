@@ -4,6 +4,7 @@
       vc-follow-symlinks      t
       shell-file-name         "/bin/bash"
 			font-use-system-font    t
+      truncate-lines          t
 			linum-format            "%4d \u2502 "
 
 			backup-directory-alist  '(("." . "~/.backups"))
@@ -28,9 +29,9 @@
         ("org"   . "https://orgmode.org/elpa/")
         ("gnu"   . "https://elpa.gnu.org/packages/")))
 
-(setq-default truncate-lines   t
-              indent-tabs-mode nil
-              tab-width        2)
+(setq-default indent-tabs-mode nil
+              tab-width        2
+              truncate-lines   t)
 
 (add-to-list 'load-path (concat dotfiles-dir "modules"))
 (load custom-file 'noerror)
@@ -44,8 +45,8 @@
 (menu-bar-mode 0)
 (global-visual-line-mode 1)
 (global-linum-mode 1)
-(tool-bar-mode 0)
 (global-hl-line-mode 1)
+(tool-bar-mode 0)
 (set-face-background hl-line-face "#206040")
 (set-face-attribute hl-line-face nil :underline nil)
 (load-theme 'wombat)
@@ -62,7 +63,4 @@
 (require 'rsslldnphy-paredit)
 (require 'rsslldnphy-clojure)
 (require 'rsslldnphy-magit)
-(require 'rsslldnphy-docker)
-(require 'rsslldnphy-js)
-(require 'rsslldnphy-yaml)
-(require 'rsslldnphy-nginx)
+(require 'rsslldnphy-filetypes)
