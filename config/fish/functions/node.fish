@@ -1,1 +1,0 @@
-/Users/rsslldnphy/.config/fisherman/nvm/node.fish
