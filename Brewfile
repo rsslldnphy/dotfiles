@@ -1,0 +1,12 @@
+brew 'coreutils', args: ['with-default-names']
+brew 'fish'
+brew 'git'
+brew 'hub'
+brew 'jq'
+brew 'leiningen'
+brew 'neovim'
+brew 'rlwrap'
+brew 'sl'
+brew 'terraform'
+brew 'tmux'
+brew 'tree'

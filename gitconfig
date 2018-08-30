@@ -1,0 +1,37 @@
+[core]
+  editor = vim
+  whitespace = trailing-space,space-before-tab
+  excludesfile = ~/.cvsignore
+
+[merge]
+  mergeoptions = --no-ff
+
+[user]
+  name = Russell Dunphy
+  email = russell@russelldunphy.com
+
+[alias]
+  co = checkout
+  c  = commit -v
+  ci = commit -m
+  aa = add -A
+  psuh = push
+  pretty = log --oneline --graph --decorate --all
+  please = push --force-with-lease
+done
+
+[push]
+  default = upstream
+
+[credential]
+
+[hub]
+  protocol = git
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f  
+  
+  
+  
