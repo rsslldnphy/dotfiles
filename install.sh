@@ -7,8 +7,8 @@ brew bundle
 
 ln -sf $(pwd)/gitconfig ~/.gitconfig
 
-mkdir -p ~/.config/nvim
-ln -sf $(pwd)/nvim/init.vim    ~/.config/nvim/init.vim
+mkdir -p ~/.config
+ln -sf $(pwd)/nvim    ~/.config/nvim
 
 mkdir -p ~/.config/fish
 mkdir -p ~/.config/fish/functions

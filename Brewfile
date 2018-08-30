@@ -1,3 +1,4 @@
+brew 'ag'
 brew 'coreutils', args: ['with-default-names']
 brew 'fish'
 brew 'git'
