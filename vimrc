@@ -37,13 +37,13 @@ Plug 'fatih/vim-nginx',                            { 'for': 'nginx'     }
 
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure'   }
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure'   }
-Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-sexp',                              { 'for': 'clojure'   }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure'   }
 
 Plug 'vim-scripts/Align',                          { 'for': 'sql'       } " required by SQLUtilities
 Plug 'vim-scripts/SQLUtilities',                   { 'for': 'sql'       }
 Plug 'vim-scripts/dbext.vim',                      { 'for': 'sql'       }
+Plug 'mustache/vim-mustache-handlebars',           { 'for': 'mustache'  }
 
 call plug#end()
 
@@ -251,8 +251,8 @@ vnoremap iq :normal! {<cr>/^[^\-]<CR>v/;<CR>:<C-w>nohl<CR>gv
 
 "" git-gutter
 
-let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-let g:gitgutter_sign_modified_removed = emoji#for('collision')
-set completefunc=emoji#complete
+" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+" let g:gitgutter_sign_modified_removed = emoji#for('collision')
+" set completefunc=emoji#complete

@@ -9,7 +9,8 @@
     :init
     (add-hook 'cider-repl-mode-hook #'paredit-mode)
     :config
-    (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
+    (setq clojure-indent-style 'align-arguments
+          cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
 
   (use-package ac-cider
     :ensure t

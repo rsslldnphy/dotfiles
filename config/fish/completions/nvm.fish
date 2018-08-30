@@ -1,0 +1,1 @@
+/Users/rsslldnphy/.config/fisherman/nvm/completions/nvm.fish

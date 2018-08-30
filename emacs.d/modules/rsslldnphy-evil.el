@@ -55,7 +55,7 @@
     (define-key evil-visual-state-map (kbd "W") 'forward-sexp)
     (define-key evil-visual-state-map (kbd "B") 'backward-sexp)
 
-    (define-key evil-normal-state-map (kbd "C-c C-k") 'eval-buffer)
+    (define-key evil-normal-state-map (kbd "C-c C-k") 'cider-eval-file)
 
     (define-key evil-normal-state-map (kbd "C-c C-l") 'paredit-forward-slurp-sexp)
     (define-key evil-normal-state-map (kbd "C-c C-h") 'paredit-forward-barf-sexp)
@@ -84,6 +84,11 @@
 
     (defalias #'forward-evil-word #'forward-evil-symbol)
     (evil-ex-define-cmd "W" "w")
-    (evil-ex-define-cmd "Wq" "wq")))
+    (evil-ex-define-cmd "Wq" "wq")
+
+    (evil-define-command hu (command)
+      (interactive "<a>")
+      (healthunlocked/hu command))
+    (evil-ex-define-cmd "hu" 'hu)))
 
 (provide 'rsslldnphy-evil)

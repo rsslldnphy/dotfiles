@@ -10,7 +10,7 @@
   (progn
     (setq projectile-completion-system 'helm)
     (projectile-mode 1)
-    (projectile-discover-projects-in-directory "~/Code")))
+    (projectile-discover-projects-in-directory "~/Code/")))
 
 (use-package ag
   :ensure t)

@@ -1,0 +1,1 @@
+/Users/rsslldnphy/.config/fisherman/await/functions/await.fish

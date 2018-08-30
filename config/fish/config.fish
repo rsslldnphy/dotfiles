@@ -1,8 +1,5 @@
 set -gx PATH /usr/local/bin $PATH
-
-set PATH $HOME/.rbenv/bin $PATH
-set PATH $HOME/.rbenv/shims $PATH
-rbenv rehash >/dev/null ^&1
+set -gx PATH ./node_modules/.bin $PATH
 
 echo
 echo "🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸  🐈  😸"
@@ -18,7 +15,6 @@ set -x INFRA_HOME ~/Code/infra
 set -x AURORA_PWD VG8G^%D*yAe6
 
 # rbenv
-set PATH ~/.rbenv/shims $PATH
 set ANSIBLE_NOCOWS 1
 
 # ssh-agent
@@ -46,3 +42,7 @@ else
 end
 
 source ~/.env
+
+alias gpf "git push --force-with-lease"
+alias n nvim
+alias e nvim
