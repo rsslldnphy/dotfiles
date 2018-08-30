@@ -5,6 +5,7 @@
 brew tap Homebrew/bundle
 brew bundle
 
+ln -sf $(pwd)/ackrc ~/.ackrc
 ln -sf $(pwd)/gitconfig ~/.gitconfig
 
 mkdir -p ~/.config
