@@ -1,0 +1,1 @@
+/Users/rsslldnphy/.config/fisherman/menu/menu.fish

@@ -1,0 +1,1 @@
+/Users/rsslldnphy/.config/fisherman/fnm/functions/fnm.fish
