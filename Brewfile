@@ -2,10 +2,13 @@ brew 'ag'
 brew 'coreutils', args: ['with-default-names']
 brew 'fish'
 brew 'git'
+brew 'grep'
+brew 'gnu-sed', args: ['--with-default-names']
 brew 'hub'
 brew 'jq'
 brew 'leiningen'
 brew 'neovim'
+brew 'rbenv'
 brew 'rlwrap'
 brew 'sl'
 brew 'terraform'
