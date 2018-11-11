@@ -1,6 +1,7 @@
 alias e    "nvim"
 alias vi   "nvim"
 alias vim  "nvim"
+alias :q   "exit"
 
 alias git  "hub"
 alias gti  "git"
