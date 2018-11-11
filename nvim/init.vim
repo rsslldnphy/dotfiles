@@ -12,6 +12,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish'
 Plug 'ervandew/supertab'
+Plug 'elixir-editors/vim-elixir'
+Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'
 Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
@@ -164,3 +166,7 @@ cnoremap <C-b> <Left>
 
 cnoremap <M-f> <S-Right>
 cnoremap <M-b> <S-Left>
+
+"" EasyAlign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
