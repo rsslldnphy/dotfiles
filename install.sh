@@ -8,6 +8,11 @@ brew bundle
 ln -sf $(pwd)/ackrc ~/.ackrc
 ln -sf $(pwd)/gitconfig ~/.gitconfig
 
+# install vim-plug
+if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
+  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
 mkdir -p ~/.config
 ln -sf $(pwd)/nvim    ~/.config/nvim
 

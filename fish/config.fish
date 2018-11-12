@@ -1,3 +1,4 @@
+set fish_greeting ''
 set -gx PATH ~/.bin $PATH
 set -gx CDPATH ~ ~/Code .
 
