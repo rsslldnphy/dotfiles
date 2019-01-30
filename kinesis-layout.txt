@@ -1,0 +1,4 @@
+{lctrl}{hyph}>{x1}{esc}
+[caps]>[lctrl]
+[lwin]>[alt]
+[lalt]>[lwin]
