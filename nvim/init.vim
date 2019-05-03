@@ -15,8 +15,10 @@ Plug 'ervandew/supertab'
 Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
+Plug 'mustache/vim-mustache-handlebars'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
@@ -24,17 +26,23 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
-" 
-Plug 'hashivim/vim-terraform',                     { 'for': 'terraform' }
-Plug 'fatih/vim-nginx',                            { 'for': 'nginx'     }
-" 
-Plug 'guns/vim-clojure-static',                    { 'for': 'clojure'   }
-Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure'   }
-Plug 'tpope/vim-fireplace',                        { 'for': 'clojure'   }
-Plug 'guns/vim-sexp',                              { 'for': 'clojure'   }
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure'   }
+ 
+Plug 'hashivim/vim-terraform',                     { 'for': 'terraform'  }
+Plug 'fatih/vim-nginx',                            { 'for': 'nginx'      }
+ 
+Plug 'guns/vim-clojure-static',                    { 'for': 'clojure'    }
+Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure'    }
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure'    }
+Plug 'guns/vim-sexp',                              { 'for': 'clojure'    }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure'    }
 
-Plug 'vim-scripts/Align',                          { 'for': 'sql'       }
+Plug 'vim-scripts/Align',                          { 'for': 'sql'        }
+
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/denite.nvim'
 
 call plug#end()
 
@@ -73,6 +81,7 @@ set shiftwidth=2
 set showcmd
 set showmatch
 set sidescrolloff=5
+set signcolumn=yes
 set smartcase
 set smarttab        " sw at the start of the line, sts everywhere else
 set splitbelow
@@ -89,6 +98,9 @@ let mapleader      = ","
 let maplocalleader = ","
 let g:mapleader    = ","
 nnoremap \ ,
+
+"" easier to reach EOL
+nmap E $
 
 "" disable ex mode until I learn if it's actually still useful
 nnoremap Q <nop>
@@ -170,3 +182,9 @@ cnoremap <M-b> <S-Left>
 "" EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:deoplete#enable_at_startup = 1
+
+" let g:nvim_typescript#diagnostics_enable = 0
