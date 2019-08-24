@@ -188,3 +188,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 
 " let g:nvim_typescript#diagnostics_enable = 0
+"
+
+let $NVIM_NODE_LOG_FILE='nvim-node.log'
+let $NVIM_NODE_LOG_LEVEL='warn'
