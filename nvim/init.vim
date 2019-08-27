@@ -38,9 +38,9 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure'    }
 
 Plug 'vim-scripts/Align',                          { 'for': 'sql'        }
 
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'styled-components/vim-styled-components',    { 'branch': 'main' }
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript'
+Plug 'mhartington/nvim-typescript',                { 'do': './install.sh' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/denite.nvim'
 
@@ -187,8 +187,5 @@ let g:python_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 
-" let g:nvim_typescript#diagnostics_enable = 0
-"
-
-let $NVIM_NODE_LOG_FILE='nvim-node.log'
-let $NVIM_NODE_LOG_LEVEL='warn'
+let g:nvim_typescript#suggestions_enabled = 0
+au BufNewFile,BufRead *.ts.ejs set filetype=javascript
