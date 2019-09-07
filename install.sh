@@ -9,6 +9,8 @@ if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
 fi
 
 mkdir -p ~/.config
+
+rm -rf ~/.config/nvim
 ln -sf $(pwd)/nvim    ~/.config/nvim
 
 mkdir -p ~/.config/fish
