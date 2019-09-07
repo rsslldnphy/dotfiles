@@ -58,6 +58,7 @@ set colorcolumn=80
 set complete-=i
 set cursorline
 set dictionary+=/usr/share/dict/words
+set diffopt+=vertical
 set display=lastline
 set encoding=utf-8
 set expandtab
