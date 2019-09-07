@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-# install homebrew apps
-
-brew tap Homebrew/bundle
-brew bundle
-
 ln -sf $(pwd)/ackrc ~/.ackrc
 ln -sf $(pwd)/gitconfig ~/.gitconfig
 
