@@ -21,3 +21,5 @@ ln -sf $(pwd)/fish/aliases.fish        ~/.config/fish/aliases.fish
 ln -sf $(pwd)/fish/config.fish         ~/.config/fish/config.fish
 ln -sf $(pwd)/fish/functions/qq.fish   ~/.config/fish/functions/qq.fish
 ln -sf $(pwd)/fish/completions/qq.fish ~/.config/fish/completions/qq.fish
+
+ln -sf $(pwd)/tmux.conf    ~/.tmux.conf
