@@ -18,7 +18,6 @@
   psuh = push
   pretty = log --oneline --graph --decorate --all
   please = push --force-with-lease
-done
 
 [push]
   default = upstream

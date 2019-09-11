@@ -19,6 +19,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'chriskempson/base16-vim'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
@@ -26,10 +27,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
- 
+
 Plug 'hashivim/vim-terraform',                     { 'for': 'terraform'  }
 Plug 'fatih/vim-nginx',                            { 'for': 'nginx'      }
- 
+
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure'    }
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure'    }
 Plug 'tpope/vim-fireplace',                        { 'for': 'clojure'    }
@@ -46,7 +47,7 @@ Plug 'Shougo/denite.nvim'
 
 call plug#end()
 
-colorscheme one
+colorscheme base16-onedark
 
 set autoindent
 set autoread
