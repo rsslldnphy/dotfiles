@@ -10,16 +10,19 @@ fi
 
 mkdir -p ~/.config
 
+ln -sf $(pwd)/tmux.conf ~/.tmux.conf
+
 rm -rf ~/.config/nvim
-ln -sf $(pwd)/nvim    ~/.config/nvim
+ln -sf $(pwd)/nvim ~/.config/nvim
 
 mkdir -p ~/.config/fish
-mkdir -p ~/.config/fish/functions
-mkdir -p ~/.config/fish/completions
 
-ln -sf $(pwd)/fish/aliases.fish        ~/.config/fish/aliases.fish
-ln -sf $(pwd)/fish/config.fish         ~/.config/fish/config.fish
-ln -sf $(pwd)/fish/functions/qq.fish   ~/.config/fish/functions/qq.fish
-ln -sf $(pwd)/fish/completions/qq.fish ~/.config/fish/completions/qq.fish
+ln -sf $(pwd)/fish/aliases.fish ~/.config/fish/aliases.fish
+ln -sf $(pwd)/fish/config.fish ~/.config/fish/config.fish
 
-ln -sf $(pwd)/tmux.conf    ~/.tmux.conf
+rm -rf ~/.config/fish/functions
+ln -sf $(pwd)/fish/functions ~/.config/fish/functions
+
+rm -rf ~/.config/fish/completions
+ln -sf $(pwd)/fish/completions ~/.config/fish/completions
+
