@@ -18,7 +18,6 @@ Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'chriskempson/base16-vim'
 
 Plug 'tpope/vim-repeat'
@@ -44,6 +43,9 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript',                { 'do': './install.sh' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/denite.nvim'
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -185,9 +187,14 @@ cnoremap <M-b> <S-Left>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-let g:python_host_prog = '/usr/local/bin/python'
+let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 
 let g:nvim_typescript#suggestions_enabled = 0
 au BufNewFile,BufRead *.ts.ejs set filetype=javascript
+
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips']
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
