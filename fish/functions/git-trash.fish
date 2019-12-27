@@ -1,6 +1,6 @@
 function git-trash
   echo "Non-master branches:"
-  echo (git branch | grep -v master)
+  git branch | grep -v master | cat
   echo
   read -P "Delete them all [y/n]? " yn
   switch $yn

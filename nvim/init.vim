@@ -38,9 +38,12 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure'    }
 
 Plug 'vim-scripts/Align',                          { 'for': 'sql'        }
 
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'styled-components/vim-styled-components',    { 'branch': 'main' }
 Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript',                { 'do': './install.sh' }
+Plug 'jparise/vim-graphql'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/denite.nvim'
 
@@ -198,3 +201,10 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips']
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<c-space>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
+
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+
+augroup SyntaxSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+augroup END

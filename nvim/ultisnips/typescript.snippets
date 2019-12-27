@@ -1,5 +1,27 @@
-snippet test "Jest test"
-test('${1:test description}', () => {
+snippet describe "Jest test"
+describe('${1:test description}', () => {
   $0
 });
+endsnippet
+
+snippet test "Jest test"
+test('${1:test description}', async () => {
+  $0
+});
+endsnippet
+
+snippet ba "Jest before all"
+beforeAll(async () => {
+  $0
+});
+endsnippet
+
+snippet aa "Jest before all"
+afterAll(async () => {
+  $0
+});
+endsnippet
+
+snippet import* "Import all"
+import * as $1 from '$2';
 endsnippet
