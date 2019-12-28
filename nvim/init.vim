@@ -9,46 +9,31 @@ endif
 call plug#begin('~/.config/nvim/vim-plug')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim-fish'
-Plug 'ervandew/supertab'
-Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'rakr/vim-one'
-Plug 'vim-airline/vim-airline'
-Plug 'chriskempson/base16-vim'
-
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
 
-Plug 'hashivim/vim-terraform',                     { 'for': 'terraform'  }
-Plug 'fatih/vim-nginx',                            { 'for': 'nginx'      }
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'fatih/vim-nginx',        { 'for': 'nginx'     }
 
-Plug 'guns/vim-clojure-static',                    { 'for': 'clojure'    }
-Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure'    }
-Plug 'tpope/vim-fireplace',                        { 'for': 'clojure'    }
-Plug 'guns/vim-sexp',                              { 'for': 'clojure'    }
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure'    }
-
-Plug 'vim-scripts/Align',                          { 'for': 'sql'        }
-
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'styled-components/vim-styled-components',    { 'branch': 'main' }
 Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'leafgarland/typescript-vim'
-Plug 'mhartington/nvim-typescript',                { 'do': './install.sh' }
-Plug 'jparise/vim-graphql'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/denite.nvim'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'styled-components/vim-styled-components',    { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
@@ -60,9 +45,7 @@ set background=dark
 set backspace=2
 set clipboard=unnamed
 set cmdheight=2
-set colorcolumn=80
 set complete-=i
-set cursorline
 set dictionary+=/usr/share/dict/words
 set diffopt+=vertical
 set display=lastline
@@ -100,7 +83,6 @@ set visualbell
 set wildmenu
 set wildmode=longest:full,full
 
-"" Jeremy - I mean comma! - for leader
 let mapleader      = ","
 let maplocalleader = ","
 let g:mapleader    = ","
@@ -139,7 +121,9 @@ imap <S-tab> <C-p>
 "" Remove trailing whitespace
 nnoremap <silent> <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+"" Airline
 let g:airline_theme='one'
+let g:airline_powerline_fonts = 1
 
 let g:ctrlp_map = '<leader><space>'
 let g:ctrlp_user_command = 'ag %s -l --nogroup --column -g ""'
@@ -152,9 +136,6 @@ nmap <leader>b :CtrlPBuffer<cr>
 let g:ackprg = 'ag --nogroup --column'
 map <C-f> :Ack<space>""<C-b>
 map <leader>f :Ack<space>""<C-b>
-
-"" Airline
-let g:airline_powerline_fonts = 1
 
 "" add %% expansion for current directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -175,7 +156,7 @@ inoremap <Down>   <nop>
 inoremap <Left>   <nop>
 inoremap <Right>  <nop>
 
-"" Emacs (sorry) movement in command mode
+"" Emacs movement in command mode
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-p> <Up>
@@ -195,12 +176,9 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 
 let g:nvim_typescript#suggestions_enabled = 0
-au BufNewFile,BufRead *.ts.ejs set filetype=javascript
+let g:nvim_typescript#default_mappings = 1
 
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips']
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger="<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
+au BufNewFile,BufRead *.ts.ejs set filetype=javascript
 
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 

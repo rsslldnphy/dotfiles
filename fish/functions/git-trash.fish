@@ -9,4 +9,3 @@ function git-trash
     case '*'
   end
 end
-

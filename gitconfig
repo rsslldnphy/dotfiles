@@ -1,3 +1,11 @@
+# This is Git's per-user configuration file.
+[user]
+  name = Russell Dunphy
+  email = russell@russelldunphy.com
+  signingkey = A7FF9293CBC1F718
+[commit]
+  gpgsign = true
+
 [core]
   editor = nvim
   whitespace = trailing-space,space-before-tab
@@ -22,8 +30,6 @@
 [push]
   default = upstream
 
-[credential]
-
 [hub]
   protocol = git
 
@@ -31,6 +37,3 @@
   required = true
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f  
-  
-  
-  

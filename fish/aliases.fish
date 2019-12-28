@@ -19,4 +19,3 @@ alias bi   "bundle install"
 alias be   "bundle exec"
 alias bu   "bundle update"
 
-alias mux  "tmuxinator"
