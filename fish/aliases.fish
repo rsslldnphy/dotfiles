@@ -19,3 +19,4 @@ alias bi   "bundle install"
 alias be   "bundle exec"
 alias bu   "bundle update"
 
+alias dockerstop "osascript -e 'quit app \"Docker\"'"

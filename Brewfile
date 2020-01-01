@@ -20,3 +20,5 @@ brew 'telnet'
 brew 'terraform'
 brew 'tmux'
 brew 'tree'
+
+cask 'ngrok'

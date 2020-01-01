@@ -515,6 +515,11 @@
           }
         }
       }
+    },
+    "cask": {
+      "ngrok": {
+        "version": "latest"
+      }
     }
   },
   "system": {

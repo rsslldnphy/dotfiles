@@ -24,3 +24,5 @@ set -gx fish_greeting ''
 set -gx EDITOR /usr/local/bin/nvim
 set -gx CDPATH . ~/Code/ck ~/Code/ck/casekit ~/Code/onourradar ~/Code ~
 
+# deal with fish/catalina autocomplete issue: https://github.com/fish-shell/fish-shell/issues/6270
+function __fish_describe_command; end

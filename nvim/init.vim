@@ -28,16 +28,18 @@ Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'fatih/vim-nginx',        { 'for': 'nginx'     }
 
 Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'jparise/vim-graphql'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh' }
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/denite.nvim'
+" Plug 'Shougo/denite.nvim'
 
-Plug 'styled-components/vim-styled-components',    { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
+" Plug 'vim-scripts/CycleColor'
 
 call plug#end()
 
-colorscheme base16-onedark
+colorscheme base16-eighties
 
 set autoindent
 set autoread
@@ -45,6 +47,7 @@ set background=dark
 set backspace=2
 set clipboard=unnamed
 set cmdheight=2
+set colorcolumn=80
 set complete-=i
 set dictionary+=/usr/share/dict/words
 set diffopt+=vertical
@@ -178,11 +181,8 @@ let g:deoplete#enable_at_startup = 1
 let g:nvim_typescript#suggestions_enabled = 0
 let g:nvim_typescript#default_mappings = 1
 
+nmap <leader>d :TSGetDiagnostics<CR>
+
 au BufNewFile,BufRead *.ts.ejs set filetype=javascript
 
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-
-augroup SyntaxSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
-augroup END
