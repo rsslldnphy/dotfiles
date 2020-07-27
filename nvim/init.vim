@@ -23,6 +23,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'qpkorr/vim-renamer'
 
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'fatih/vim-nginx',        { 'for': 'nginx'     }
@@ -36,6 +37,12 @@ Plug 'Shougo/deoplete.nvim'
 " Plug 'Shougo/denite.nvim'
 
 " Plug 'vim-scripts/CycleColor'
+"
+Plug 'guns/vim-clojure-static',                    { 'for': 'clojure'    }
+Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure'    }
+Plug 'tpope/vim-fireplace',                        { 'for': 'clojure'    }
+Plug 'guns/vim-sexp',                              { 'for': 'clojure'    }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure'    }
 
 call plug#end()
 
@@ -186,3 +193,5 @@ nmap <leader>d :TSGetDiagnostics<CR>
 au BufNewFile,BufRead *.ts.ejs set filetype=javascript
 
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+
+map <buffer> <C-c><C-k> :Require<CR>

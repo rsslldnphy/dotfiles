@@ -5,15 +5,20 @@ ssh-add -l |grep -q (ssh-keygen -lf ~/.ssh/id_rsa  | awk '{print $2}') || ssh-ad
 
 # Node
 set -gx N_PREFIX ~/.n
-set -gx PATH ./node_modules/.bin $N_PREFIX/bin $PATH
+set -gx PATH ~/.local/bin ./node_modules/.bin $N_PREFIX/bin $PATH
 
 # Python
-set -gx PATH /usr/local/opt/python/libexec/bin ~/Library/Python/3.7/bin $PATH
-set -gx PATH ~/Library/Python/2.7/bin $PATH
+set -x PYENV_ROOT $HOME/.pyenv
+set -x PATH $PYENV_ROOT/bin $PATH
+status --is-interactive; and . (pyenv init -|psub)
+status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
 # Ruby
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=(brew --prefix openssl@1.1)"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 status --is-interactive; and source (rbenv init -|psub)
+
+# Java
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/
 
 # GNU utils
 set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
@@ -26,3 +31,5 @@ set -gx CDPATH . ~/Code/ck ~/Code/ck/casekit ~/Code/onourradar ~/Code ~
 
 # deal with fish/catalina autocomplete issue: https://github.com/fish-shell/fish-shell/issues/6270
 function __fish_describe_command; end
+source /usr/local/opt/asdf/asdf.fish
+set -g fish_user_paths "/usr/local/opt/postgresql@11/bin" $fish_user_paths
