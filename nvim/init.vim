@@ -28,16 +28,17 @@ Plug 'qpkorr/vim-renamer'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'fatih/vim-nginx',        { 'for': 'nginx'     }
 
-Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-" Plug 'jparise/vim-graphql'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh' }
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'Shougo/deoplete.nvim'
-" Plug 'Shougo/denite.nvim'
 
-" Plug 'vim-scripts/CycleColor'
-"
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+Plug 'pangloss/vim-javascript'    " JavaScript support
+" Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
+
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+
+
 Plug 'guns/vim-clojure-static',                    { 'for': 'clojure'    }
 Plug 'guns/vim-clojure-highlight',                 { 'for': 'clojure'    }
 Plug 'tpope/vim-fireplace',                        { 'for': 'clojure'    }
@@ -73,6 +74,8 @@ set mouse=a
 set mousemodel=popup
 set noswapfile
 set nowrap
+set nobackup
+set nowritebackup
 set number
 set pastetoggle=<F2>
 set scrolloff=999
@@ -82,12 +85,14 @@ set showcmd
 set showmatch
 set sidescrolloff=5
 set signcolumn=yes
+set shortmess+=c
 set smartcase
 set smarttab        " sw at the start of the line, sts everywhere else
 set splitbelow
 set splitright
 set tabstop=2
 set termguicolors
+set updatetime=300
 set virtualedit=block
 set visualbell
 set wildmenu
@@ -185,13 +190,72 @@ let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 
-let g:nvim_typescript#suggestions_enabled = 0
-let g:nvim_typescript#default_mappings = 1
+" let g:nvim_typescript#suggestions_enabled = 0
+" let g:nvim_typescript#default_mappings = 1
 
-nmap <leader>d :TSGetDiagnostics<CR>
+" nmap <leader>d :TSGetDiagnostics<CR>
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 au BufNewFile,BufRead *.ts.ejs set filetype=javascript
 
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '__snapshots__']
 
 map <buffer> <C-c><C-k> :Require<CR>
+
+let g:coc_global_extensions = [ 'coc-tsserver', 'coc-eslint' ]
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" let g:typescript_indent_disable = 1
+
+" light-grey
+hi tsxTypeBraces guifg=#666666
+" dark-grey
+hi tsxTypes guifg=#aaaaaa
+hi tsxComponentName guifg=#99aacc
+hi tsxCloseComponentName guifg=#99aacc
+hi jsObjectKey guifg=#999999
+hi tsxAttributeBraces guifg=#bb88cc
+hi typescriptConditional guifg=#bb88cc
+hi typescriptBranch guifg=#bb88cc
+hi typescriptOpSymbols guifg=#88ccbb
+hi tsxString guifg=#88ccbb
+
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+
+augroup TypeScriptSyntax
+  autocmd!
+  autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+augroup END
+
+function! TerminalExit()
+  nnoremap <buffer> <CR> :bd!<CR>
+  nnoremap <buffer> q :bd!<CR>
+endfun
+
+augroup TerminalExit
+  autocmd!
+  autocmd TermOpen * call TerminalExit()
+augroup END
+
+function! JestBindings()
+  nnoremap <leader>t :te jest %<CR>
+  nnoremap <leader>u :te jest % --updateSnapshot<CR>
+endfun
+
+augroup JestBindings
+  autocmd!
+  autocmd BufEnter *.test.{js,jsx,ts,tsx} call JestBindings()
+augroup END
+
