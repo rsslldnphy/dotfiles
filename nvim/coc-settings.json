@@ -1,5 +1,14 @@
 {
   "suggest.noselect": false,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "tsserver.trace.server": "verbose"
+  "tsserver.trace.server": "verbose",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "css",
+    "markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "git.enableGutters": true
 }

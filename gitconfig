@@ -22,6 +22,7 @@
   co = checkout
   c  = commit -v
   ci = commit -m
+  ic = commit -m
   aa = add -A
   psuh = push
   pretty = log --oneline --graph --decorate --all
