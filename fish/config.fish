@@ -27,7 +27,7 @@ set -gx PATH /usr/local/opt/gnu-sed/libexec/gnubin $PATH
 # Misc
 set -gx fish_greeting ''
 set -gx EDITOR /usr/local/bin/nvim
-set -gx CDPATH . ~/Code/ck ~/Code/ck/casekit ~/Code/onourradar ~/Code ~
+set -gx CDPATH . ~/Code/ck ~/Code/ck/casekit ~/Code/gg ~/Code ~
 
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
 

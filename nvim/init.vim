@@ -130,16 +130,16 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "" Remove trailing whitespace
 nnoremap <silent> <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-"" Remove temptation of arrow keys
-noremap <Up>      <nop>
-noremap <Down>    <nop>
-noremap <Left>    <nop>
-noremap <Right>   <nop>
+" "" Remove temptation of arrow keys
+" noremap <Up>      <nop>
+" noremap <Down>    <nop>
+" noremap <Left>    <nop>
+" noremap <Right>   <nop>
 
-inoremap <Up>     <nop>
-inoremap <Down>   <nop>
-inoremap <Left>   <nop>
-inoremap <Right>  <nop>
+" inoremap <Up>     <nop>
+" inoremap <Down>   <nop>
+" inoremap <Left>   <nop>
+" inoremap <Right>  <nop>
 
 "" Emacs movement in command mode
 cnoremap <C-a> <Home>
@@ -169,3 +169,14 @@ nmap <leader><leader> :A<CR>
 let g:vimwiki_list = [
       \{'path': '~/Code/notes/goodgym', 'syntax': 'markdown', 'ext': '.md'},
       \{'path': '~/Code/notes/casekit', 'syntax': 'markdown', 'ext': '.md'}]
+
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
