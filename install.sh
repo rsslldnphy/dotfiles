@@ -13,9 +13,11 @@ ln -sf $(pwd)/fish/config.fish ~/.config/fish/config.fish
 ln -sf $(pwd)/fish/functions ~/.config/fish/functions
 
 # neovim
-
 rm -rf ~/.config/nvim
 ln -sf $(pwd)/nvim ~/.config/nvim
+
+# karabiner
+ln -sf $(pwd)/karabiner.json ~/.config/karabiner/karabiner.json
 
 # install vim-plug
 if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
