@@ -3,6 +3,8 @@ source ~/.config/fish/aliases.fish
 # SSH
 ssh-add -l |grep -q (ssh-keygen -lf ~/.ssh/id_rsa  | awk '{print $2}') || ssh-add ~/.ssh/id_rsa
 
+set -gx GPG_TTY (tty)
+
 # Node
 set -gx N_PREFIX ~/.n
 set -gx PATH ~/.local/bin ./node_modules/.bin $N_PREFIX/bin $PATH
