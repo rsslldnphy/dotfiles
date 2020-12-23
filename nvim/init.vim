@@ -6,7 +6,7 @@ if &shell =~# 'fish$'
   set shell=bash
 endif
 
-call plug#begin(stdpath('data') . '/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'mileszs/ack.vim'
 Plug 'dag/vim-fish'

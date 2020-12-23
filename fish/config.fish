@@ -8,10 +8,10 @@ set -gx N_PREFIX ~/.n
 set -gx PATH ~/.local/bin ./node_modules/.bin $N_PREFIX/bin $PATH
 
 # Python
-set -x PYENV_ROOT $HOME/.pyenv
-set -x PATH $PYENV_ROOT/bin $PATH
-status --is-interactive; and . (pyenv init -|psub)
-status --is-interactive; and . (pyenv virtualenv-init -|psub)
+# set -x PYENV_ROOT $HOME/.pyenv
+# set -x PATH $PYENV_ROOT/bin $PATH
+# status --is-interactive; and . (pyenv init -|psub)
+# status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
 # Ruby
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
