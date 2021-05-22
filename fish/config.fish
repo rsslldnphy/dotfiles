@@ -10,9 +10,16 @@ set -gx N_PREFIX ~/.n
 set -gx PATH ~/.local/bin ./node_modules/.bin $N_PREFIX/bin $PATH
 
 # Python
-# set -x PYENV_ROOT $HOME/.pyenv
-# set -x PATH $PYENV_ROOT/bin $PATH
-# status --is-interactive; and . (pyenv init -|psub)
+set -x PYENV_ROOT $HOME/.pyenv
+set -x PATH $PYENV_ROOT/bin $PATH
+
+set -gx LDFLAGS "-L/usr/local/opt/zlib/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/zlib/include"
+set -gx PKG_CONFIG_PATH "/usr/local/opt/zlib/lib/pkgconfig"
+set -gx LDFLAGS "-L/usr/local/opt/bzip2/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/bzip2/include"
+
+status --is-interactive; and . (pyenv init -|psub)
 # status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
 # Ruby
