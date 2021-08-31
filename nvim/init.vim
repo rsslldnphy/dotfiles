@@ -177,3 +177,5 @@ function! InsertTabWrapper()
 endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
+
+let @a = 'c2f"css={styles.roo}i'

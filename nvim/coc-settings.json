@@ -10,7 +10,8 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "ruby"
   ],
   "git.enableGutters": true,
   "javascript.suggestionActions.enabled": false
