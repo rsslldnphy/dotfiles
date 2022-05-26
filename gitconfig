@@ -2,7 +2,7 @@
 [user]
   name = Russell Dunphy
   email = russell@russelldunphy.com
-  signingkey = A7FF9293CBC1F718
+	signingkey = 058F26C1542C18A7
 [commit]
   gpgsign = true
 
@@ -41,3 +41,5 @@
   smudge = git-lfs smudge %f  
 [pull]
 	ff = only
+[init]
+	defaultBranch = main

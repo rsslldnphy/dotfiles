@@ -14,7 +14,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhartington/oceanic-next'
-Plug 'neoclide/coc.nvim', { 'branch' : 'release' }
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -49,17 +49,19 @@ Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
-let g:coc_global_extensions = [
-	\ 'coc-eslint',
-	\ 'coc-git',
-	\ 'coc-html',
-	\ 'coc-json',
-	\ 'coc-prettier',
-	\ 'coc-snippets',
-	\ 'coc-stylelint',
-	\ 'coc-tsserver',
-	\ 'coc-yaml',
-\ ]
+let g:loaded_perl_provider = 0
+
+" let g:coc_global_extensions = [
+" 	\ 'coc-eslint',
+" 	\ 'coc-git',
+" 	\ 'coc-html',
+" 	\ 'coc-json',
+" 	\ 'coc-prettier',
+" 	\ 'coc-snippets',
+" 	\ 'coc-stylelint',
+" 	\ 'coc-tsserver',
+" 	\ 'coc-yaml',
+" \ ]
 
 set termguicolors
 
@@ -149,7 +151,7 @@ cnoremap <C-b> <Left>
 cnoremap <M-f> <S-Right>
 cnoremap <M-b> <S-Left>
 
-source ~/.config/nvim/coc.vim
+" source ~/.config/nvim/coc.vim
 source ~/.config/nvim/typescript.vim
 source ~/.config/nvim/nerdtree.vim
 source ~/.config/nvim/easyalign.vim
