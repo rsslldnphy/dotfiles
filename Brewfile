@@ -22,5 +22,6 @@ brew 'telnet'
 brew 'terraform'
 brew 'tmux'
 brew 'tree'
+brew 'saulpw/vd/visidata'
 
 cask 'ngrok'

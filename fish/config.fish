@@ -9,3 +9,7 @@ source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 # aliases
 alias e nvim
+
+starship init fish | source
+
+alias today 'ruby ~/Code/curzon/curzon.rb'

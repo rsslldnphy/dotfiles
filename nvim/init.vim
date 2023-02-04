@@ -14,13 +14,14 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhartington/oceanic-next'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-projectionist'
 Plug 'scrooloose/nerdtree'
+Plug 'qpkorr/vim-renamer'
 
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'fatih/vim-nginx',        { 'for': 'nginx'     }
@@ -46,22 +47,23 @@ Plug 'tpope/vim-rails'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vimwiki/vimwiki'
+Plug 'prisma/vim-prisma'
 
 call plug#end()
 
 let g:loaded_perl_provider = 0
 
-" let g:coc_global_extensions = [
-" 	\ 'coc-eslint',
-" 	\ 'coc-git',
-" 	\ 'coc-html',
-" 	\ 'coc-json',
-" 	\ 'coc-prettier',
-" 	\ 'coc-snippets',
-" 	\ 'coc-stylelint',
-" 	\ 'coc-tsserver',
-" 	\ 'coc-yaml',
-" \ ]
+let g:coc_global_extensions = [
+	\ 'coc-eslint',
+	\ 'coc-git',
+	\ 'coc-html',
+	\ 'coc-json',
+	\ 'coc-prettier',
+	\ 'coc-snippets',
+	\ 'coc-stylelint',
+	\ 'coc-tsserver',
+	\ 'coc-yaml',
+\ ]
 
 set termguicolors
 

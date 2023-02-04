@@ -1,19 +1,8 @@
 command_timeout = 3000
 add_newline = false
 
-[directory.substitutions]
-'rosemary/src/Web/accuRx.Web.Design/' = '[accurx-design] '
-'rosemary/src/Web/accuRx.Web.Design' = '[accurx-design]'
-'rosemary/src/Web/accuRx.Web.Client.Shared/' = '[accurx-shared] '
-'rosemary/src/Web/accuRx.Web.Client.Shared' = '[accurx-shared]'
-'rosemary/src/Web/accuRx.Fleming.Client/ClientApp/' = '[fleming-client] '
-'rosemary/src/Web/accuRx.Fleming.Client/ClientApp' = '[fleming-client]'
-'rosemary/src/Web/accuRx.Florey.Client/ClientApp/' = '[florey-client] '
-'rosemary/src/Web/accuRx.Florey.Client/ClientApp' = '[florey-client]'
-'rosemary/src/Web/accuRx.PatientPortal.Client/ClientApp/' = '[patient-portal] '
-'rosemary/src/Web/accuRx.PatientPortal.Client/ClientApp' = '[patient-portal]'
-'rosemary/' = 'rosemary '
-'rosemary' = '[rosemary]'
+[aws]
+disabled = true
 
 [cmd_duration]
 disabled = true

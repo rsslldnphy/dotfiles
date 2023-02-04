@@ -3,6 +3,8 @@
   "tsserver.trace.server": "verbose",
   "tsserver.log": "verbose",
   "typescript.showUnused": false,
+  "typescript.autoClosingTags": true,
+  "javascript.autoClosingTags": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "css",
