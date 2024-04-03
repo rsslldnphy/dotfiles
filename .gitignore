@@ -4,4 +4,3 @@ nvim/autoload
 nvim/plugged
 Alfred.alfredpreferences/
 .DS_Store
-Brewfile.lock.json

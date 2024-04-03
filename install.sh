@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+brew bundle
+
 mkdir -p ~/.config
 
 # misc
@@ -7,23 +9,27 @@ ln -sf $(pwd)/gitconfig ~/.gitconfig
 ln -sf $(pwd)/ackrc ~/.ackrc
 
 # fish
+if ! cat /etc/shells|grep fish >/dev/null; then
+    echo $(which fish) | sudo tee --append /etc/shells;
+    chsh -s $(which fish)
+fi
+
+
+
 mkdir -p ~/.config/fish
 ln -sf $(pwd)/fish/config.fish ~/.config/fish/config.fish
+fish $(pwd)/fish/abbreviations.fish
+
+ln -sf $(pwd)/starship.toml ~/.config/starship.toml
 
 mkdir -p ~/.config/fish/functions
 ln -sf $(pwd)/fish/functions/git-trash.fish ~/.config/fish/functions/git-trash.fish
 ln -sf $(pwd)/fish/functions/gr.fish ~/.config/fish/functions/gr.fish
 
-# neovim
-rm -rf ~/.config/nvim
-ln -sf $(pwd)/nvim ~/.config/nvim
-
 # karabiner
+mkdir -p ~/.config/karabiner
 ln -sf $(pwd)/karabiner.json ~/.config/karabiner/karabiner.json
 
-# install vim-plug
-if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-source $(pwd)/fish/abbreviations.fish
+echo
+echo TODO:
+echo " - Install '0xProto Nerd Font' from https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/0xProto.zip"

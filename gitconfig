@@ -1,22 +1,23 @@
-# This is Git's per-user configuration file.
 [user]
   name = Russell Dunphy
   email = russell@russelldunphy.com
-	signingkey = 058F26C1542C18A7
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOiAHCTud0DxzsHTWBd017/lHH18ErJrtPVNH4n4TrXU
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
 [commit]
-  gpgsign = true
+	gpgsign = true
 
 [core]
   editor = nvim
   whitespace = trailing-space,space-before-tab
-  excludesfile = ~/.cvsignore
 
 [merge]
   mergeoptions = --no-ff
-
-[user]
-  name = Russell Dunphy
-  email = russell@russelldunphy.com
 
 [alias]
   co = checkout
@@ -32,14 +33,13 @@
 [push]
   default = upstream
 
-[hub]
-  protocol = git
-
 [filter "lfs"]
   required = true
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f  
+
 [pull]
 	ff = only
+
 [init]
 	defaultBranch = main
