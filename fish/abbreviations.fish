@@ -15,4 +15,3 @@ abbr gl git pull
 abbr gci git commit -m
 abbr gti git
 abbr :q exit
-abbr e nvim
