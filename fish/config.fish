@@ -7,6 +7,8 @@ set -gx GPG_TTY (tty)
 # asdf
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
+fish_add_path /opt/homebrew/bin
+
 # aliases
 
 
@@ -14,7 +16,7 @@ if status is-interactive
     starship init fish | source
 
     alias e nvim
-    alias p pnpm
+    abbr p pnpm
 
     abbr :q exit
     abbr gb gh repo view --web
