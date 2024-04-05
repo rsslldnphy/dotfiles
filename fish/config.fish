@@ -26,8 +26,9 @@ if status is-interactive
     abbr glog git log --pretty=format:"'%C(auto)%h - %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset'" --abbrev-commit
     abbr gp git push
     abbr gpf git push --force-with-lease
-    abbr gpo git push -u origin (git rev-parse --abbrev-ref HEAD)
+    abbr gpo 'git push -u origin (git rev-parse --abbrev-ref HEAD)'
     abbr gst git status
     abbr gti git
+    abbr pr gh pr create --web
     abbr p pnpm
 end
