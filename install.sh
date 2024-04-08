@@ -18,11 +18,11 @@ fi
 
 mkdir -p ~/.config/fish
 ln -sf $(pwd)/fish/config.fish ~/.config/fish/config.fish
-fish $(pwd)/fish/abbreviations.fish
 
 ln -sf $(pwd)/starship.toml ~/.config/starship.toml
 
 mkdir -p ~/.config/fish/functions
+ln -sf $(pwd)/fish/functions/git-trash.fish ~/.config/fish/functions/git-trash.fish
 ln -sf $(pwd)/fish/functions/git-trash.fish ~/.config/fish/functions/git-trash.fish
 
 # karabiner

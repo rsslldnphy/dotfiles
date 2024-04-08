@@ -31,4 +31,5 @@ if status is-interactive
     abbr gti git
     abbr pr gh pr create --web
     abbr p pnpm
+    abbr gr gh pr create --web
 end
