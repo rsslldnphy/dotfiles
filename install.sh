@@ -23,7 +23,7 @@ ln -sf $(pwd)/starship.toml ~/.config/starship.toml
 
 mkdir -p ~/.config/fish/functions
 ln -sf $(pwd)/fish/functions/git-trash.fish ~/.config/fish/functions/git-trash.fish
-ln -sf $(pwd)/fish/functions/git-trash.fish ~/.config/fish/functions/git-trash.fish
+ln -sf $(pwd)/fish/functions/gb.fish ~/.config/fish/functions/gb.fish
 
 # karabiner
 mkdir -p ~/.config/karabiner

@@ -19,7 +19,6 @@ if status is-interactive
     abbr p pnpm
 
     abbr :q exit
-    abbr gb gh repo view --web
     abbr gci git commit -m
     abbr gco git checkout
     abbr gl git pull
