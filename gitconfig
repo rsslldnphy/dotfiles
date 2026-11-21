@@ -1,45 +1,85 @@
 [user]
-  name = Russell Dunphy
-  email = russell@russelldunphy.com
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOiAHCTud0DxzsHTWBd017/lHH18ErJrtPVNH4n4TrXU
 
 [gpg]
 	format = ssh
 
 [gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
 [commit]
 	gpgsign = true
 
-[core]
-  editor = nvim
-  whitespace = trailing-space,space-before-tab
+[tag]
+	gpgsign = true
 
-[merge]
-  mergeoptions = --no-ff
+[core]
+	editor = nvim
+	whitespace = trailing-space,space-before-tab
+	sshCommand = /opt/homebrew/bin/ssh
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
 
 [alias]
-  co = checkout
-  c  = commit -v
-  ci = commit -m
-  ic = commit -m
-  aa = add -A
-  psuh = push
-  pretty = log --oneline --graph --decorate --all
-  please = push --force-with-lease
+	co = checkout
+	c  = commit -v
+	ci = commit -m
+	ic = commit -m
+	aa = add -A
+	psuh = push
+	pretty = log --oneline --graph --decorate --all
+	please = push --force-with-lease
 	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 
-[push]
-  default = upstream
+[init]
+	defaultBranch = main
 
-[filter "lfs"]
-  required = true
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f  
+[fetch]
+	prune = true
 
 [pull]
 	ff = only
 
-[init]
-	defaultBranch = main
+[push]
+	default = upstream
+	autoSetupRemote = true
+
+[merge]
+	ff = false
+	conflictStyle = zdiff3
+
+[rebase]
+	autoStash = true
+
+[rerere]
+	enabled = true
+
+[diff]
+	algorithm = histogram
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+# Name and email live here (not committed); install.sh creates it
+[include]
+	path = ~/.gitconfig.local
