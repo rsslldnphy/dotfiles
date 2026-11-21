@@ -1,0 +1,29 @@
+{
+  // Editor
+  "editor.fontFamily": "'0xProto Nerd Font', Menlo, monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange",
+  "vim.useSystemClipboard": true,
+
+  // Terminal: fish, same font as iTerm
+  "terminal.integrated.fontFamily": "'0xProto Nerd Font'",
+  "terminal.integrated.profiles.osx": {
+    "fish": {
+      "path": "/opt/homebrew/bin/fish",
+      "args": ["-l"]
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "fish",
+
+  // Git: let git's own credential helper (gh) handle auth, not VS Code
+  "git.terminalAuthentication": false,
+  "github.gitAuthentication": false,
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.statusBarItem.enabled": true,
+
+  // Claude Code
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.hideOnboarding": true
+}

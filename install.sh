@@ -36,5 +36,16 @@ link gitconfig         ~/.gitconfig
 link starship.toml    ~/.config/starship.toml
 link fish/config.fish    ~/.config/fish/config.fish
 link fish/functions    ~/.config/fish/functions
+link vscode/settings.json ~/Library/"Application Support"/Code/User/settings.json
+
+# VS Code extensions (general ones only; language extensions belong to projects)
+if command -v code >/dev/null; then
+  while read -r ext; do
+    [ -n "$ext" ] && code --install-extension "$ext" >/dev/null
+  done < vscode/extensions.txt
+  echo "VS Code extensions installed"
+else
+  echo "Warning: VS Code 'code' command not found, skipping extensions" >&2
+fi
 
 ./macos/setup.sh

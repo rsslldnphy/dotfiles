@@ -1,0 +1,2 @@
+anthropic.claude-code
+vscodevim.vim
