@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+PATH=/opt/workbrew/bin:$PATH
+
 # Run from the repo root regardless of where the script is called from
 cd "$(dirname "$0")"
 DOTFILES=$PWD
