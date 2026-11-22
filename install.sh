@@ -54,4 +54,11 @@ else
   echo "Warning: VS Code 'code' command not found, skipping extensions" >&2
 fi
 
+# 1Password shell plugin for Heroku: keeps the API key in 1Password instead of ~/.netrc.
+# Interactive: it asks which 1Password item holds the key, then writes ~/.config/op/plugins.sh
+if command -v op >/dev/null && [ ! -f ~/.config/op/plugins/heroku.json ]; then
+  echo "Setting up the 1Password Heroku plugin"
+  op plugin init heroku || echo "Warning: Heroku plugin setup failed, run 'op plugin init heroku' later" >&2
+fi
+
 ./macos/setup.sh

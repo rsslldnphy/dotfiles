@@ -65,6 +65,7 @@ if [ ! -f ~/Library/Fonts/0xProtoNerdFont-Regular.ttf ]; then
 fi
 
 # --- iTerm: Oceanic Dark colours + 0xProto Nerd Font as the default profile -
+# It also starts fish directly, since making fish the login shell (chsh) needs admin
 # Built as a dynamic profile from the .itermcolors file, so the colours stay in one place
 profiles=~/Library/"Application Support"/iTerm2/DynamicProfiles
 mkdir -p "$profiles"
@@ -73,7 +74,9 @@ plutil -convert json -o - iterm/oceanic-dark.itermcolors \
       "Name": "Oceanic Dark",
       "Guid": "oceanic-dark",
       "Dynamic Profile Parent Name": "Default",
-      "Normal Font": "0xProtoNF 12"
+      "Normal Font": "0xProtoNF 12",
+      "Custom Command": "Yes",
+      "Command": "/opt/homebrew/bin/fish -l"
     }]}' > "$profiles/oceanic-dark.json"
 defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string oceanic-dark
 
