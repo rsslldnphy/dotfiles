@@ -24,6 +24,9 @@ if [ -x /opt/workbrew/bin/brew ]; then
   PATH="/opt/workbrew/bin:$PATH"
 fi
 
+# Workbrew won't let brew bundle add taps itself, so add them first
+brew tap heroku/brew
+
 brew bundle --file=Brewfile || echo "Warning: brew bundle failed, continuing" >&2
 
 # Git name/email go in ~/.gitconfig.local so they stay out of the repo.
