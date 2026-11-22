@@ -19,6 +19,11 @@ link() {
   echo "Linked $dest"
 }
 
+# Under Workbrew, /opt/homebrew belongs to the workbrew user, so brew must run through its wrapper
+if [ -x /opt/workbrew/bin/brew ]; then
+  PATH="/opt/workbrew/bin:$PATH"
+fi
+
 brew bundle --file=Brewfile || echo "Warning: brew bundle failed, continuing" >&2
 
 # Git name/email go in ~/.gitconfig.local so they stay out of the repo.
