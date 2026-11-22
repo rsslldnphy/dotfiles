@@ -27,6 +27,22 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
+# --- Window tiling shortcuts (Keyboard Shortcuts > Windows) -----------------
+# hotkey <id> <character code> <key code>: sets the shortcut to Ctrl+Option+key.
+# 786432 is the Ctrl+Option modifier mask; 65535 means "no character" (e.g. Return)
+hotkey() {
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$1" \
+    "<dict><key>enabled</key><true/><key>value</key><dict>
+      <key>type</key><string>standard</string>
+      <key>parameters</key><array><integer>$2</integer><integer>$3</integer><integer>786432</integer></array>
+    </dict></dict>"
+}
+hotkey 237 65535 36  # Fill: Ctrl+Option+Return
+# Key codes are physical key positions; these are H and L on a Dvorak layout
+hotkey 240 104   38  # Tile Left Half: Ctrl+Option+H
+hotkey 241 108   35  # Tile Right Half: Ctrl+Option+L
+hotkey 239 48    29  # Return to Previous Size: Ctrl+Option+0
+
 # --- Finder -----------------------------------------------------------------
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.finder ShowPathbar -bool true
@@ -43,8 +59,9 @@ defaults write com.apple.dock show-recents -bool false
 mkdir -p ~/Screenshots
 defaults write com.apple.screencapture location -string ~/Screenshots
 
-# Restart the apps that only read these settings at launch
+# Restart the apps that only read these settings at launch, and reload keyboard shortcuts
 killall Finder Dock SystemUIServer 2>/dev/null || true
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u 2>/dev/null || true
 
 # --- Caps Lock -> Control ---------------------------------------------------
 # A LaunchAgent reapplies it at every login; (re)loading it applies it now too
