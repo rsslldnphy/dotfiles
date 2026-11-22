@@ -32,6 +32,12 @@ if ! git config --file ~/.gitconfig.local user.email >/dev/null 2>&1; then
   git config --file ~/.gitconfig.local user.email "${email:-$default_email}"
 fi
 
+# Trust our own signing key so git can verify signatures locally
+signer="$(git config --file ~/.gitconfig.local user.email) $(git config --file gitconfig user.signingkey)"
+mkdir -p ~/.config/git
+touch ~/.config/git/allowed_signers
+grep -qxF "$signer" ~/.config/git/allowed_signers || echo "$signer" >> ~/.config/git/allowed_signers
+
 link gitconfig         ~/.gitconfig
 link starship.toml    ~/.config/starship.toml
 link fish/config.fish    ~/.config/fish/config.fish

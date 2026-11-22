@@ -5,7 +5,6 @@ fish_add_path -g --move ~/.local/share/mise/shims
 fish_add_path -g --move ~/.local/bin
 
 if status is-interactive
-    ssh-add -l > /dev/null || ssh-add
     set -gx GPG_TTY (tty)
 
     starship init fish | source
