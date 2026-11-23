@@ -34,7 +34,7 @@ if status is-interactive
     abbr gti git
     abbr gr gh pr create --web
 
-    if test -f ~/.config/op/plugins.sh
-        source ~/.config/op/plugins.sh
+    if test -f ~/.config/op/plugins.fish
+        source ~/.config/op/plugins.fish
     end
 end
